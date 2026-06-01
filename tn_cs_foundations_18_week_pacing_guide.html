@@ -1,0 +1,1681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TN CS Foundations - 18-Week Hybrid Pacing Guide</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        :root {
+            --slate-50: #f8fafc;
+            --slate-100: #f1f5f9;
+            --slate-200: #e2e8f0;
+            --slate-700: #334155;
+            --slate-800: #1e293b;
+            --slate-900: #0f172a;
+            --blue-500: #3b82f6;
+            --blue-600: #2563eb;
+            --blue-700: #1d4ed8;
+            --emerald-500: #10b981;
+            --emerald-600: #059669;
+            --amber-500: #f59e0b;
+            --rose-500: #f43f5e;
+            --border-radius: 12px;
+            --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--slate-50);
+            color: var(--slate-700);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.6;
+            padding-bottom: 80px;
+        }
+
+        header {
+            background-color: var(--slate-900);
+            border-bottom: 4px solid var(--blue-600);
+            color: white;
+            padding: 40px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            background-image: radial-gradient(rgba(59, 130, 246, 0.15) 1.5px, transparent 1.5px);
+            background-size: 20px 20px;
+            content: '';
+            height: 100%;
+            left: 0;
+            position: absolute;
+            top: 0;
+            width: 100%;
+            z-index: 0;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header-badge {
+            background-color: var(--blue-600);
+            border-radius: 20px;
+            color: white;
+            display: inline-block;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            margin-bottom: 15px;
+            padding: 6px 16px;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            font-size: 38px;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            margin-bottom: 10px;
+        }
+
+        .header-sub {
+            color: var(--slate-200);
+            font-size: 18px;
+            max-width: 800px;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* Dash Summary Cards */
+        .dash-grid {
+            display: grid;
+            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            margin-bottom: 40px;
+        }
+
+        .dash-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            border: 1px solid var(--slate-200);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            padding: 24px;
+            position: relative;
+        }
+
+        .dash-card::before {
+            content: '';
+            height: 4px;
+            left: 0;
+            position: absolute;
+            top: 0;
+            width: 100%;
+            border-top-left-radius: var(--border-radius);
+            border-top-right-radius: var(--border-radius);
+        }
+
+        .card-blue::before { background-color: var(--blue-500); }
+        .card-emerald::before { background-color: var(--emerald-500); }
+        .card-amber::before { background-color: var(--amber-500); }
+
+        .dash-card h3 {
+            color: var(--slate-900);
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .dash-card p {
+            font-size: 14px;
+            color: var(--slate-700);
+        }
+
+        .dash-card ul {
+            list-style: none;
+            margin-top: 10px;
+        }
+
+        .dash-card li {
+            align-items: center;
+            display: flex;
+            font-size: 13.5px;
+            gap: 8px;
+            margin-bottom: 6px;
+        }
+
+        .dash-card li i {
+            font-size: 14px;
+        }
+
+        /* Pacing Schedule Controls & Layout */
+        .section-header {
+            align-items: center;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 24px;
+            border-bottom: 2px solid var(--slate-200);
+            padding-bottom: 12px;
+        }
+
+        .section-header h2 {
+            color: var(--slate-900);
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .legend-pills {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .pill {
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 4px 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        .pill-ai { background-color: #dbeafe; color: #1e40af; }
+        .pill-web { background-color: #d1fae5; color: #065f46; }
+        .pill-tinker { background-color: #fef3c7; color: #92400e; }
+        .pill-sys { background-color: #f3e8ff; color: #6b21a8; }
+
+        /* The Timeline / Weekly Stack */
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* Standard Accordion details tag styling */
+        details.week-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            border: 1px solid var(--slate-200);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        details.week-card[open] {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
+            border-color: var(--slate-200);
+        }
+
+        summary {
+            align-items: center;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            list-style: none; /* Hide default arrow */
+            padding: 24px;
+            user-select: none;
+        }
+
+        /* Webkit specific arrow removal */
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .summary-left {
+            align-items: center;
+            display: flex;
+            gap: 20px;
+        }
+
+        .week-num {
+            align-items: center;
+            background-color: var(--slate-900);
+            border-radius: 8px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            font-family: 'JetBrains Mono', monospace;
+            height: 56px;
+            justify-content: center;
+            width: 70px;
+            flex-shrink: 0;
+        }
+
+        .week-num span:first-child {
+            font-size: 11px;
+            text-transform: uppercase;
+            font-weight: 500;
+            opacity: 0.8;
+            line-height: 1;
+        }
+
+        .week-num span:last-child {
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .week-title-area {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .week-title-area h3 {
+            color: var(--slate-900);
+            font-size: 18px;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .week-subtitle {
+            color: #64748b;
+            font-size: 14px;
+            margin-top: 2px;
+        }
+
+        .summary-right {
+            align-items: center;
+            display: flex;
+            gap: 15px;
+        }
+
+        .source-indicator {
+            border-radius: 4px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 4px 8px;
+            text-transform: uppercase;
+        }
+
+        .bg-ai { background-color: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; }
+        .bg-web { background-color: #ecfdf5; color: #047857; border: 1px solid #a7f3d0; }
+        .bg-tinker { background-color: #fffbeb; color: #b45309; border: 1px solid #fde68a; }
+        .bg-sys { background-color: #faf5ff; color: #7e22ce; border: 1px solid #e9d5ff; }
+
+        .arrow-icon {
+            color: var(--slate-700);
+            font-size: 16px;
+            transition: transform 0.2s ease;
+        }
+
+        details[open] .arrow-icon {
+            transform: rotate(180deg);
+        }
+
+        /* Card Content Area */
+        .card-content {
+            border-top: 1px solid var(--slate-100);
+            padding: 24px;
+            background-color: #fdfdfd;
+        }
+
+        .content-grid {
+            display: grid;
+            gap: 24px;
+            grid-template-columns: 2fr 1fr;
+        }
+
+        @media (max-width: 900px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .content-block h4 {
+            color: var(--slate-900);
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .content-block h4 i {
+            color: var(--blue-600);
+        }
+
+        .content-block p {
+            font-size: 14.5px;
+            color: var(--slate-700);
+            margin-bottom: 15px;
+        }
+
+        .standards-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 15px;
+        }
+
+        .standard-tag {
+            background-color: var(--slate-200);
+            border-radius: 4px;
+            color: var(--slate-900);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 3px 8px;
+        }
+
+        /* Specific styles for listings */
+        .daily-outline {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .daily-outline li {
+            background-color: white;
+            border-radius: 6px;
+            border-left: 3px solid var(--blue-500);
+            padding: 10px 14px;
+            font-size: 14px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        .daily-outline li strong {
+            color: var(--slate-900);
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        /* Right sidebar specs */
+        .specs-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            background-color: var(--slate-50);
+            border-radius: 8px;
+            padding: 20px;
+            border: 1px solid var(--slate-100);
+        }
+
+        .spec-item {
+            font-size: 13.5px;
+        }
+
+        .spec-item strong {
+            color: var(--slate-900);
+            display: block;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+            margin-bottom: 2px;
+        }
+
+        /* Teacher Quick Advice Box */
+        .tip-box {
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-radius: 8px;
+            color: #166534;
+            padding: 15px;
+            margin-top: 15px;
+            display: flex;
+            gap: 12px;
+            font-size: 13.5px;
+        }
+
+        .tip-box i {
+            font-size: 18px;
+            margin-top: 2px;
+            color: var(--emerald-600);
+        }
+
+        .tip-box p strong {
+            font-weight: 700;
+        }
+
+        .resource-link {
+            align-items: center;
+            color: var(--blue-600);
+            display: inline-flex;
+            font-size: 13px;
+            font-weight: 600;
+            gap: 5px;
+            margin-top: 8px;
+            text-decoration: none;
+        }
+
+        .resource-link:hover {
+            color: var(--blue-700);
+            text-decoration: underline;
+        }
+
+        /* Print friendly styling */
+        @media print {
+            body { background: white; padding: 0; }
+            main { margin: 0; padding: 0; width: 100%; max-width: 100%; }
+            .dash-grid, .legend-pills, .section-header .legend-pills { display: none !important; }
+            details.week-card { page-break-inside: avoid; border: 1px solid #ccc; margin-bottom: 20px; box-shadow: none; }
+            details.week-card summary::-webkit-details-marker { display: none; }
+            summary { pointer-events: none; }
+            .arrow-icon { display: none; }
+            .card-content { display: block !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <span class="header-badge">TN CTE Approved Strategy</span>
+            <h1>Computer Science Foundations</h1>
+            <p class="header-sub">An 18-Week Hybrid Pacing Calendar designed for New CTE Teachers to perfectly map to May 2025 Tennessee State Standards.</p>
+        </div>
+    </header>
+
+    <main>
+        <!-- Dashboard Summary Overview -->
+        <div class="dash-grid">
+            <div class="dash-card card-blue">
+                <h3>Core Structure</h3>
+                <p>Combines cutting-edge Artificial Intelligence foundations with crucial web building, system terminal utilities, and physical system architecture.</p>
+                <ul>
+                    <li><i class="fa-solid fa-layer-group" style="color:var(--blue-500);"></i> Backbone: Code.org AI Foundations</li>
+                    <li><i class="fa-solid fa-code" style="color:var(--emerald-500);"></i> Web: CS Discoveries Unit 2</li>
+                    <li><i class="fa-solid fa-microchip" style="color:var(--amber-500);"></i> Electronics: Tinkercad Circuits</li>
+                </ul>
+            </div>
+            <div class="dash-card card-emerald">
+                <h3>Major TN Alignments</h3>
+                <p>Direct coverage of challenging, newly emphasized career expectations that standard curricula leave out:</p>
+                <ul>
+                    <li><i class="fa-solid fa-cloud-arrow-up" style="color:var(--blue-500);"></i> Cloud Computing Basics (8.1-8.6)</li>
+                    <li><i class="fa-solid fa-scale-balanced" style="color:var(--amber-500);"></i> AI Ethics Frameworks (13.2)</li>
+                    <li><i class="fa-solid fa-shield-halved" style="color:var(--rose-500);"></i> Network Systems Defenses (14.1)</li>
+                </ul>
+            </div>
+            <div class="dash-card card-amber">
+                <h3>Supplements &amp; Gaps</h3>
+                <p>This layout plugs the common syllabus holes without forcing schools to buy expensive computer components or micro-controllers.</p>
+                <ul>
+                    <li><i class="fa-solid fa-plug" style="color:var(--amber-500);"></i> Circuit Gaps → Tinkercad virtual model</li>
+                    <li><i class="fa-solid fa-terminal" style="color:var(--rose-500);"></i> Sys Command Gaps → Lab activities</li>
+                    <li><i class="fa-solid fa-wallet" style="color:var(--emerald-500);"></i> Material Cost → 100% Free / Browser</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Weekly Pacing Schedule Header -->
+        <div class="section-header">
+            <h2>The 18-Week Class Plan</h2>
+            <div class="legend-pills">
+                <span class="pill pill-ai">AI Foundations</span>
+                <span class="pill pill-web">CSD Web Design</span>
+                <span class="pill pill-tinker">Tinkercad Circuits</span>
+                <span class="pill pill-sys">Local Shell / Labs</span>
+            </div>
+        </div>
+
+        <div class="timeline">
+
+            <!-- WEEK 1 -->
+            <details class="week-card" open>
+                <summary>
+                    <div class="summary-left">
+                        <div class="week-num">
+                            <span>Week</span>
+                            <span>01</span>
+                        </div>
+                        <div class="week-title-area">
+                            <h3>IT Pathways &amp; Course Onboarding</h3>
+                            <span class="week-subtitle">Introducing systems, classroom expectations, and career fields.</span>
+                        </div>
+                    </div>
+                    <div class="summary-right">
+                        <span class="source-indicator bg-ai">AI Foundations</span>
+                        <i class="fa-solid fa-chevron-down arrow-icon"></i>
+                    </div>
+                </summary>
+                <div class="card-content">
+                    <div class="content-grid">
+                        <div class="content-left">
+                            <div class="content-block">
+                                <h4><i class="fa-solid fa-crosshairs"></i> Weekly Objective &amp; Standards</h4>
+                                <div class="standards-list">
+                                    <span class="standard-tag">1.1 Class Safety</span>
+                                    <span class="standard-tag">3.1 IT Occupations</span>
+                                    <span class="standard-tag">3.2 Pathways</span>
+                                    <span class="standard-tag">3.3 Professionalism</span>
+                                </div>
+                                <p>Set foundational expectations for safety in computer labs. Explore various career domains in Information Technology, specifically comparing jobs in coding, system administration, cybersecurity, and emerging AI technologies.</p>
+                            </div>
+                            <div class="content-block">
+                                <h4><i class="fa-solid fa-calendar-day"></i> Suggested Daily Schedule</h4>
+                                <ul class="daily-outline">
+                                    <li><strong>Day 1: Welcome &amp; Lab Safety Guidelines</strong> Introduction to workstation safety, ergonomics, and district computing rules (Std 1.1).</li>
+                                    <li><strong>Day 2: Career Pathway Mapping Activity</strong> Students research definitions of Networking, Coding, Design, Cyber, and Data pathways (Std 3.1).</li>
+                                    <li><strong>Day 3: Guest Speaker Video/Reflections</strong> Screen and dissect high-interest career interviews with IT practitioners.</li>
+                                    <li><strong>Day 4: Professional Communication Basics</strong> Introduction to digital citizenship, drafting executive emails, and collaboration (Std 3.3).</li>
+                                    <li><strong>Day 5: Week Recap &amp; Path Quiz</strong> Baseline assessment on pathways and career profiles.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="specs-sidebar">
+                            <div class="spec-item">
+                                <strong>Platform Target</strong>
+                                Code.org AI Foundations (Unit 1, Lesson 1)
+                            </div>
+                            <div class="spec-item">
+                                <strong>Key Terminology</strong>
+                                Ergonomics, Networking, Web Design, Cybersecurity, Professionalism
+                            </div>
+                            <div class="spec-item">
+                                <strong>Assessment Tip</strong>
+                                Have students create a brief 1-slide profile of their top choice IT occupation.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tip-box">
+                        <i class="fa-solid fa-circle-info"></i>
+                        <p><strong>First-Year Teacher Advice:</strong> Do not rush to computers on day one. Spend this week configuring Code.org classroom accounts. Build a strong collaborative classroom culture early before introducing independent lab tasks.</p>
+                    </div>
+                </div>
+            </details>
+
+            <!-- WEEK 2 -->
+            <details class="week-card">
+                <summary>
+                    <div class="summary-left">
+                        <div class="week-num">
+                            <span>Week</span>
+                            <span>02</span>
+                        </div>
+                        <div class="week-title-area">
+                            <h3>Computing Systems &amp; Hardware Components</h3>
+                            <span class="week-subtitle">Dissecting the system concept, input, output, processing, and storage.</span>
+                        </div>
+                    </div>
+                    <div class="summary-right">
+                        <span class="source-indicator bg-ai">AI Foundations</span>
+                        <i class="fa-solid fa-chevron-down arrow-icon"></i>
+                    </div>
+                </summary>
+                <div class="card-content">
+                    <div class="content-grid">
+                        <div class="content-left">
+                            <div class="content-block">
+                                <h4><i class="fa-solid fa-crosshairs"></i> Weekly Objective &amp; Standards</h4>
+                                <div class="standards-list">
+                                    <span class="standard-tag">5.1 Computing Systems</span>
+                                    <span class="standard-tag">5.2 Input / Output</span>
+                                    <span class="standard-tag">5.3 Memory Types</span>
+                                    <span class="standard-tag">6.1 Tech Terminology</span>
+                                </div>
+                                <p>Understand how a computing system coordinates hardware parts to execute programmatic logic. Compare Random Access Memory (RAM) to local solid-state storage, and classify modern sensors as input or output elements.</p>
+                            </div>
+                            <div class="content-block">
+                                <h4><i class="fa-solid fa-calendar-day"></i> Suggested Daily Schedule</h4>
+                                <ul class="daily-outline">
+                                    <li><strong>Day 1: The Input-Process-Output-Storage Model</strong> Diagram physical hardware systems using everyday machine examples (Std 5.1).</li>
+                                    <li><strong>Day 2: Under the Hood: Inside a PC Case</strong> Examine motherboards, CPUs, cooling systems, RAM slots, and drive controllers (Std 5.3).</li>
+                                    <li><strong>Day 3: Memory Battles: RAM vs. Disk</strong> Visual interactive game where students act as cache registers, RAM, and hard drives to understand latency.</li>
+                                    <li><strong>Day 4: Sensors &amp; Peripherals</strong> Review real-world input sensors (LiDAR, thermal, gyroscope) that drive modern computing device ecosystems (Std 5.2).</li>
+                                    <li><strong>Day 5: Hands-on Hardware Labeling Lab</strong> Standard component identification review and memory unit conversions (KB, MB, GB, TB).</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="specs-sidebar">
+                            <div class="spec-item">
+                                <strong>Platform Target</strong>
+                                Code.org AI Foundations (Unit 1, Lesson 2)
+                            </div>
+                            <div class="spec-item">
+                                <strong>Key Terminology</strong>
+                                CPU, RAM, Cache, Solid State Drive (SSD), Sensor Array, Processing Cycle
+                            </div>
+                            <div class="spec-item">
+                                <strong>Assessment Tip</strong>
+                                Use physical, decommissioned computers if available for a hands-on component identification lab.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tip-box">
+                        <i class="fa-solid fa-circle-info"></i>
+                        <p><strong>First-Year Teacher Advice:</strong> RAM vs Storage is the most common point of confusion for students. Emphasize that RAM is short-term active workspace (like a desk surface) and Storage is long-term file cabinets.</p>
+                    </div>
+                </div>
+            </details>
+
+            <!-- WEEK 3 -->
+            <details class="week-card">
+                <summary>
+                    <div class="summary-left">
+                        <div class="week-num">
+                            <span>Week</span>
+                            <span>03</span>
+                        </div>
+                        <div class="week-title-area">
+                            <h3>Electricity, Ohm's Law &amp; Circuits</h3>
+                            <span class="week-subtitle">Integrating digital electronics and physical laws inside the browser.</span>
+                        </div>
+                    </div>
+                    <div class="summary-right">
+                        <span class="source-indicator bg-tinker">Tinkercad Circuits</span>
+                        <i class="fa-solid fa-chevron-down arrow-icon"></i>
+                    </div>
+                </summary>
+                <div class="card-content">
+                    <div class="content-grid">
+                        <div class="content-left">
+                            <div class="content-block">
+                                <h4><i class="fa-solid fa-crosshairs"></i> Weekly Objective &amp; Standards</h4>
+                                <div class="standards-list">
+                                    <span class="standard-tag">2.1 Ohm's Law</span>
+                                    <span class="standard-tag">2.2 Circuit Components</span>
+                                    <span class="standard-tag">2.4 Logic Gates</span>
+                                </div>
+                                <p>Bridge the physical hardware gap by examining digital electrical theory. Introduce students to current, voltage, and resistance calculations, and explore AND, OR, and NOT logical operations through circuit design simulation.</p>
+                            </div>
+                            <div class="content-block">
+                                <h4><i class="fa-solid fa-calendar-day"></i> Suggested Daily Schedule</h4>
+                                <ul class="daily-outline">
+                                    <li><strong>Day 1: Introduction to Circuits &amp; V = I * R</strong> Basic electrical physics math with custom practice calculation sheets (Std 2.1).</li>
+                                    <li><strong>Day 2: Tinkercad Virtual Lab Set-up</strong> Onboard student accounts to Tinkercad. Run basic LED, battery, and resistor test configurations.</li>
+                                    <li><strong>Day 3: Ohm's Law Verification Challenge</strong> Students adjust virtual resistors to see brightness change. Record voltage with multimeters (Std 2.2).</li>
+                                    <li><strong>Day 4: Digital Switches &amp; Logic Gates</strong> Map how single physical pushbuttons correspond to logical AND / OR circuit configurations (Std 2.4).</li>
+                                    <li><strong>Day 5: Logic Circuit Lab Report</strong> Grade interactive schematic completions using standard worksheets.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="specs-sidebar">
+                            <div class="spec-item">
+                                <strong>Platform Target</strong>
+                                Autodesk Tinkercad Circuits Simulator (Free)
+                            </div>
+                            <div class="spec-item">
+                                <strong>Key Terminology</strong>
+                                Voltage (V), Current (I), Resistance (R), Logic Gate, Schematic, Breadboard
+                            </div>
+                            <div class="spec-item">
+                                <strong>Math Component</strong>
+                                Ohm's Law calculations: Voltage = Current &times; Resistance.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tip-box">
+                        <i class="fa-solid fa-circle-info"></i>
+                        <p><strong>First-Year Teacher Advice:</strong> This unit covers a major standards gap. Because virtual electrical components are free on Tinkercad, students can instantly reset parts when they accidentally "blow up" a virtual LED, removing all logistics constraints.</p>
+                    </div>
+                </div>
+            </details>
+
+            <!-- WEEK 4 -->
+            <details class="week-card">
+                <summary>
+                    <div class="summary-left">
+                        <div class="week-num">
+                            <span>Week</span>
+                            <span>04</span>
+                        </div>
+                        <div class="week-title-area">
+                            <h3>Digital Information &amp; Hexadecimal Representation</h3>
+                            <span class="week-subtitle">How computers encode numbers, text, images, and audio.</span>
+                        </div>
+                    </div>
+                    <div class="summary-right">
+                        <span class="source-indicator bg-ai">AI Foundations</span>
+                        <i class="fa-solid fa-chevron-down arrow-icon"></i>
+                    </div>
+                </summary>
+                <div class="card-content">
+                    <div class="content-grid">
+                        <div class="content-left">
+                            <div class="content-block">
+                                <h4><i class="fa-solid fa-crosshairs"></i> Weekly Objective &amp; Standards</h4>
+                                <div class="standards-list">
+                                    <span class="standard-tag">9.1 Hexadecimal / Octal</span>
+                                    <span class="standard-tag">9.2 Binary Encoding</span>
+                                    <span class="standard-tag">9.3 Data Quality</span>
+                                </div>
+                                <p>Compare and convert base-2 (binary), base-10 (decimal), and base-16 (hexadecimal) systems. Analyze how pixels are mapped using numeric hex codes to display high-resolution RGB imagery on monitors.</p>
+                            </div>
+                            <div class="content-block">
+                                <h4><i class="fa-solid fa-calendar-day"></i> Suggested Daily Schedule</h4>
+                                <ul class="daily-outline">
+                                    <li><strong>Day 1: The Base-2 System</strong> Understand state representation with physical lightbulbs. Convert simple integers to binary (Std 9.2).</li>
+                                    <li><strong>Day 2: Introduction to Hexadecimal</strong> Why base-16 is used. Map relationship between binary nibbles and individual hex characters (Std 9.1).</li>
+                                    <li><strong>Day 3: ASCII, Unicode &amp; Text Translation</strong> How computers convert sequences of numbers to written language structures.</li>
+                                    <li><strong>Day 4: Color Coding &amp; Pixel Grids</strong> Code.org interactive pixel widget tasks. Color composition analysis using hexadecimal strings (e.g., #FFFFFF).</li>
+                                    <li><strong>Day 5: Week 4 Number Systems Quiz</strong> Assessment on conversions and character encoding.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="specs-sidebar">
+                            <div class="spec-item">
+                                <strong>Platform Target</strong>
+                                Code.org AI Foundations (Unit 1, Lessons 3 &amp; 4)
+                            </div>
+                            <div class="spec-item">
+                                <strong>Key Terminology</strong>
+                                Binary, Decimal, Hexadecimal, ASCII, RGB Values, State Representation
+                            </div>
+                            <div class="spec-item">
+                                <strong>Math Component</strong>
+                                Arithmetic bases: base-2 and base-16 calculation conversions.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tip-box">
+                        <i class="fa-solid fa-circle-info"></i>
+                        <p><strong>First-Year Teacher Advice:</strong> Remind students that hexadecimal is simply shorthand for binary. Converting four binary bits into one hex digit saves engineers time and reduces reading error rates.</p>
+                    </div>
+                </div>
+            </details>
+
+            <!-- WEEK 5 -->
+            <details class="week-card">
+                <summary>
+                    <div class="summary-left">
+                        <div class="week-num">
+                            <span>Week</span>
+                            <span>05</span>
+                        </div>
+                        <div class="week-title-area">
+                            <h3>Web Development: HTML Structural Code</h3>
+                            <span class="week-subtitle">Beginning CSD Unit 2 integration to study layout paradigms.</span>
+                        </div>
+                    </div>
+                    <div class="summary-right">
+                        <span class="source-indicator bg-web">CSD Web Design</span>
+                        <i class="fa-solid fa-chevron-down arrow-icon"></i>
+                    </div>
+                </summary>
+                <div class="card-content">
+                    <div class="content-grid">
+                        <div class="content-left">
+                            <div class="content-block">
+                                <h4><i class="fa-solid fa-crosshairs"></i> Weekly Objective &amp; Standards</h4>
+                                <div class="standards-list">
+                                    <span class="standard-tag">6.1 Terminology</span>
+                                    <span class="standard-tag">10.1 Web Structure</span>
+                                    <span class="standard-tag">11.1 File Management</span>
+                                </div>
+                                <p>Begin a targeted 3-week web engineering unit using the Web Lab platform. Focus on core markup concepts, nesting hierarchies, and defining visual content divisions using standard tags.</p>
+                            </div>
+                            <div class="content-block">
+                                <h4><i class="fa-solid fa-calendar-day"></i> Suggested Daily Schedule</h4>
+                                <ul class="daily-outline">
+                                    <li><strong>Day 1: The Architecture of a Web Page</strong> Examine HTML headers, body structures, metadata, and browser layout rendering (Std 10.1).</li>
+                                    <li><strong>Day 2: Structural Markup Tags</strong> Explore paragraph blocks &lt;p&gt;, headings &lt;h1&gt; through &lt;h6&gt;, and divisions.</li>
+                                    <li><strong>Day 3: Structured Content Layouts</strong> Build functional unordered &lt;ul&gt; and ordered &lt;ol&gt; list elements on code workspaces.</li>
+                                    <li><strong>Day 4: Visual Sourcing &amp; Attributes</strong> Embed local images &lt;img src="..."&gt; with accessibility alt attributes (Std 11.1).</li>
+                                    <li><strong>Day 5: Week 5 Basic Structure Lab Check</strong> Review structural formatting using diagnostic code files.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="specs-sidebar">
+                            <div class="spec-item">
+                                <strong>Platform Target</strong>
+                                Code.org CS Discoveries (Unit 2, Lessons 1 - 5)
+                            </div>
+                            <div class="spec-item">
+                                <strong>Key Terminology</strong>
+                                HTML, Attribute, Hierarchy, Head/Body Tags, Image Embed, Alternate Text
+                            </div>
+                            <div class="spec-item">
+                                <strong>Assessment Tip</strong>
+                                Set up strict checks to ensure students always add alt text tags to their structural image tags.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tip-box">
+                        <i class="fa-solid fa-circle-info"></i>
+                        <p><strong>First-Year Teacher Advice:</strong> This unit plugs a major alignment gap. Students learn that HTML creates raw structural bone frameworks before they begin styling components with CSS rules next week.</p>
+                    </div>
+                </div>
+            </details>
+
+            <!-- WEEK 6 -->
+            <details class="week-card">
+                <summary>
+                    <div class="summary-left">
+                        <div class="week-num">
+                            <span>Week</span>
+                            <span>06</span>
+                        </div>
+                        <div class="week-title-area">
+                            <h3>Web Development: CSS Styling Rules</h3>
+                            <span class="week-subtitle">Applying stylesheets, rule sets, design hierarchy, and formatting.</span>
+                        </div>
+                    </div>
+                    <div class="summary-right">
+                        <span class="source-indicator bg-web">CSD Web Design</span>
+                        <i class="fa-solid fa-chevron-down arrow-icon"></i>
+                    </div>
+                </summary>
+                <div class="card-content">
+                    <div class="content-grid">
+                        <div class="content-left">
+                            <div class="content-block">
+                                <h4><i class="fa-solid fa-crosshairs"></i> Weekly Objective &amp; Standards</h4>
+                                <div class="standards-list">
+                                    <span class="standard-tag">12.1 Visual Styles</span>
+                                    <span class="standard-tag">12.2 Media Components</span>
+                                    <span class="standard-tag">15.1 Usability Layout</span>
+                                </div>
+                                <p>Master external stylesheet connection methods. Introduce CSS layout rules, font styling overrides, margin controls, border parameters, color palette harmonies, and user interface planning principles.</p>
+                            </div>
+                            <div class="content-block">
+                                <h4><i class="fa-solid fa-calendar-day"></i> Suggested Daily Schedule</h4>
+                                <ul class="daily-outline">
+                                    <li><strong>Day 1: Connecting Stylesheets</strong> Learn link tag syntax &lt;link rel="stylesheet" href="style.css"&gt; structures (Std 12.1).</li>
+                                    <li><strong>Day 2: Selector Mechanics</strong> Practice changing background colors, font classes, alignment, and border characteristics.</li>
+                                    <li><strong>Day 3: The CSS Box Model Theory</strong> Clear visualization lessons comparing content, padding, borders, and outer margin offsets (Std 15.1).</li>
+                                    <li><strong>Day 4: CSS Typography &amp; Classes</strong> Build specific layout templates targeting classes (.text-highlight) vs individual IDs.</li>
+                                    <li><strong>Day 5: CSS Design Implementation Lab</strong> Styling tasks to transform unformatted HTML documents.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="specs-sidebar">
+                            <div class="spec-item">
+                                <strong>Platform Target</strong>
+                                Code.org CS Discoveries (Unit 2, Lessons 6 - 10)
+                            </div>
+                            <div class="spec-item">
+                                <strong>Key Terminology</strong>
+                                CSS, Rule Set, Selector, Box Model, Class Selector, Styling Declarations
+                            </div>
+                            <div class="spec-item">
+                                <strong>Assessment Tip</strong>
+                                Grade students on selector consistency and clean file naming practices.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tip-box">
+                        <i class="fa-solid fa-circle-info"></i>
+                        <p><strong>First-Year Teacher Advice:</strong> Draw the Box Model on the whiteboard and physically walk through the borders. Visualizing content vs. padding prevents confusion when scaling UI components.</p>
+                    </div>
+                </div>
+            </details>
+
+            <!-- WEEK 7 -->
+            <details class="week-card">
+                <summary>
+                    <div class="summary-left">
+                        <div class="week-num">
+                            <span>Week</span>
+                            <span>07</span>
+                        </div>
+                        <div class="week-title-area">
+                            <h3>Website Portfolio Project Planning</h3>
+                            <span class="week-subtitle">Defining development cycles and planning client structures.</span>
+                        </div>
+                    </div>
+                    <div class="summary-right">
+                        <span class="source-indicator bg-web">CSD Web Design</span>
+                        <i class="fa-solid fa-chevron-down arrow-icon"></i>
+                    </div>
+                </summary>
+                <div class="card-content">
+                    <div class="content-grid">
+                        <div class="content-left">
+                            <div class="content-block">
+                                <h4><i class="fa-solid fa-crosshairs"></i> Weekly Objective &amp; Standards</h4>
+                                <div class="standards-list">
+                                    <span class="standard-tag">11.1 Directory Paths</span>
+                                    <span class="standard-tag">12.2 Digital CMS</span>
+                                    <span class="standard-tag">15.1 Layout Planning</span>
+                                </div>
+                                <p>Formally initiate the personal web portfolio project required by state standards. Build multi-page file directories, plan site structures with wireframes, and draft user-experience (UX) layout plans.</p>
+                            </div>
+                            <div class="content-block">
+                                <h4><i class="fa-solid fa-calendar-day"></i> Suggested Daily Schedule</h4>
+                                <ul class="daily-outline">
+                                    <li><strong>Day 1: Project Scope and Constraints</strong> Showcase high-quality model portfolios. Identify required content sections (Std 15.1).</li>
+                                    <li><strong>Day 2: Site Architecture &amp; Wireframing</strong> Sketch responsive structures on paper before writing code. Map visual navigation hierarchies.</li>
+                                    <li><strong>Day 3: Directory Organization Rules</strong> Construct index.html, portfolio.html, contacts.html, and a centralized asset folder (Std 11.1).</li>
+                                    <li><strong>Day 4: Creating Hyperlinks</strong> Code anchor systems &lt;a href="..."&gt; linking local multi-page layouts cleanly.</li>
+                                    <li><strong>Day 5: Milestone Code Check-in</strong> Submit verified multi-page frameworks and wireframes for rubric assessment.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="specs-sidebar">
+                            <div class="spec-item">
+                                <strong>Platform Target</strong>
+                                Code.org Web Lab Environment
+                            </div>
+                            <div class="spec-item">
+                                <strong>Key Terminology</strong>
+                                Portfolio, Wireframe, Asset Directory, Anchor Link, Directory Hierarchy, Relative Path
+                            </div>
+                            <div class="spec-item">
+                                <strong>Project Milestone</strong>
+                                Completed Site Map Diagram &amp; HTML Page Skeleton.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tip-box">
+                        <i class="fa-solid fa-circle-info"></i>
+                        <p><strong>First-Year Teacher Advice:</strong> Require visual sketches before students write any code. It saves significant lab time because students have a clear structural plan to follow once they sit at the computer.</p>
+                    </div>
+                </div>
+            </details>
+
+            <!-- WEEK 8 -->
+            <details class="week-card">
+                <summary>
+                    <div class="summary-left">
+                        <div class="week-num">
+                            <span>Week</span>
+                            <span>08</span>
+                        </div>
+                        <div class="week-title-area">
+                            <h3>Portfolio Site Development &amp; Launch</h3>
+                            <span class="week-subtitle">Writing stylesheets, coding layouts, and conducting peer reviews.</span>
+                        </div>
+                    </div>
+                    <div class="summary-right">
+                        <span class="source-indicator bg-web">CSD Web Design</span>
+                        <i class="fa-solid fa-chevron-down arrow-icon"></i>
+                    </div>
+                </summary>
+                <div class="card-content">
+                    <div class="content-grid">
+                        <div class="content-left">
+                            <div class="content-block">
+                                <h4><i class="fa-solid fa-crosshairs"></i> Weekly Objective &amp; Standards</h4>
+                                <div class="standards-list">
+                                    <span class="standard-tag">10.1 Structured Layout</span>
+                                    <span class="standard-tag">12.2 Portfolios</span>
+                                    <span class="standard-tag">15.1 UX Optimization</span>
+                                </div>
+                                <p>Complete the web development cycle. Write stylesheets to customize layouts, integrate image assets with alternate text, and conduct quality assurance testing across multiple platforms.</p>
+                            </div>
+                            <div class="content-block">
+                                <h4><i class="fa-solid fa-calendar-day"></i> Suggested Daily Schedule</h4>
+                                <ul class="daily-outline">
+                                    <li><strong>Day 1: Structural Page Coding</strong> Build rich paragraphs, styled header tags, and lists within portfolio frames (Std 10.1).</li>
+                                    <li><strong>Day 2: Layout Design Pass</strong> Connect the external CSS stylesheet. Implement color schemes and typography classes.</li>
+                                    <li><strong>Day 3: Asset Clean Up &amp; Optimization</strong> Compress heavy image files and ensure relative directory paths resolve correctly (Std 11.1).</li>
+                                    <li><strong>Day 4: Peer Usability Review</strong> Swap workstations for peer-review cycles. Verify links work and that styles remain consistent across screens (Std 15.1).</li>
+                                    <li><strong>Day 5: Portfolio Launch Day</strong> Formally publish Code.org project links. Students submit final links to the LMS grading portal.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="specs-sidebar">
+                            <div class="spec-item">
+                                <strong>Platform Target</strong>
+                                Code.org Web Lab Environment
+                            </div>
+                            <div class="spec-item">
+                                <strong>Key Terminology</strong>
+                                Relative Path, Layout Consistency, User Feedback, Visual Hierarchy, QA Testing
+                            </div>
+                            <div class="spec-item">
+                                <strong>Project Milestone</strong>
+                                Live, published Web Portfolio Project (Std 12.2).
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tip-box">
+                        <i class="fa-solid fa-circle-info"></i>
+                        <p><strong>First-Year Teacher Advice:</strong> Set up a centralized spreadsheet of all student project URLs. These live links serve as functional digital binders where students will document work throughout the remainder of the course.</p>
+                    </div>
+                </div>
+            </details>
+
+            <!-- WEEK 9 -->
+            <details class="week-card">
+                <summary>
+                    <div class="summary-left">
+                        <div class="week-num">
+                            <span>Week</span>
+                            <span>09</span>
+                        </div>
+                        <div class="week-title-area">
+                            <h3>Operating Systems &amp; Command Line Utilities</h3>
+                            <span class="week-subtitle">Using the terminal to navigate local folders and network layers.</span>
+                        </div>
+                    </div>
+                    <div class="summary-right">
+                        <span class="source-indicator bg-sys">Local Shell / Labs</span>
+                        <i class="fa-solid fa-chevron-down arrow-icon"></i>
+                    </div>
+                </summary>
+                <div class="card-content">
+                    <div class="content-grid">
+                        <div class="content-left">
+                            <div class="content-block">
+                                <h4><i class="fa-solid fa-crosshairs"></i> Weekly Objective &amp; Standards</h4>
+                                <div class="standards-list">
+                                    <span class="standard-tag">16.1 System Utilities</span>
+                                    <span class="standard-tag">16.2 Directory Structures</span>
+                                    <span class="standard-tag">16.3 Batch Scripts / CMD</span>
+                                </div>
+                                <p>Transition from graphic interfaces to command shell interfaces. Learn to navigate directories, manipulate file systems, and execute core utilities like system diagnostics via terminal commands.</p>
+                            </div>
+                            <div class="content-block">
+                                <h4><i class="fa-solid fa-calendar-day"></i> Suggested Daily Schedule</h4>
+                                <ul class="daily-outline">
+                                    <li><strong>Day 1: Operating System Architectures</strong> Compare how OS cores manage kernel drivers and system resources (Std 16.1).</li>
+                                    <li><strong>Day 2: File Directory Trees</strong> Explore how folders nest. Learn absolute vs. relative paths using physical diagrams (Std 16.2).</li>
+                                    <li><strong>Day 3: Terminal Navigation Basics</strong> Open the console window. Practice directory management commands (`cd`, `dir`, `mkdir`) (Std 16.3).</li>
+                                    <li><strong>Day 4: Network Command Utilities</strong> Learn to test device latency and inspect active network interfaces with commands like `ping` and `ipconfig`.</li>
+                                    <li><strong>Day 5: Command Shell Navigation Test</strong> Practical assessment where students navigate virtual folders to retrieve a hidden flag.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="specs-sidebar">
+                            <div class="spec-item">
+                                <strong>Platform Target</strong>
+                                Windows Command Prompt (CMD) or Repl.it bash
+                            </div>
+                            <div class="spec-item">
+                                <strong>Key Terminology</strong>
+                                Directory Tree, Relative Path, Terminal, Console, Core Commands (cd, dir, ping, ipconfig)
+                            </div>
+                            <div class="spec-item">
+                                <strong>Assessment Tip</strong>
+                                Build a folder structure on student computers beforehand and use a "scavenger hunt" challenge where students must find a hidden code file.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tip-box">
+                        <i class="fa-solid fa-circle-info"></i>
+                        <p><strong>First-Year Teacher Advice:</strong> Command line interface (CLI) can feel intimidating to high school students who are used to touchscreens. Remind them that system administrators use these commands to automate tasks and diagnose complex network issues.</p>
+                    </div>
+                </div>
+            </details>
+
+            <!-- WEEK 10 -->
+            <details class="week-card">
+                <summary>
+                    <div class="summary-left">
+                        <div class="week-num">
+                            <span>Week</span>
+                            <span>10</span>
+                        </div>
+                        <div class="week-title-area">
+                            <h3>The Architecture of the Internet</h3>
+                            <span class="week-subtitle">Unpacking packets, routing protocols, TCP/IP, and name servers.</span>
+                        </div>
+                    </div>
+                    <div class="summary-right">
+                        <span class="source-indicator bg-ai">AI Foundations</span>
+                        <i class="fa-solid fa-chevron-down arrow-icon"></i>
+                    </div>
+                </summary>
+                <div class="card-content">
+                    <div class="content-grid">
+                        <div class="content-left">
+                            <div class="content-block">
+                                <h4><i class="fa-solid fa-crosshairs"></i> Weekly Objective &amp; Standards</h4>
+                                <div class="standards-list">
+                                    <span class="standard-tag">4.1 Internet Structure</span>
+                                    <span class="standard-tag">4.2 Packet Switching</span>
+                                    <span class="standard-tag">4.3 DNS Protocol</span>
+                                    <span class="standard-tag">6.1 Tech Terminology</span>
+                                </div>
+                                <p>Trace how digital information travels across network layers. Demystify IP addressing schemas, domain name resolution, package routing models, redundancy systems, and end-to-end data delivery.</p>
+                            </div>
+                            <div class="content-block">
+                                <h4><i class="fa-solid fa-calendar-day"></i> Suggested Daily Schedule</h4>
+                                <ul class="daily-outline">
+                                    <li><strong>Day 1: What is the Internet?</strong> Analyze physical infrastructure: fiber optics, deep-sea cables, and router layers (Std 4.1).</li>
+                                    <li><strong>Day 2: Packet Routing Simulation</strong> Visual class activity modeling how large messages break into packets and route dynamically (Std 4.2).</li>
+                                    <li><strong>Day 3: IP Addresses and DNS Lookup</strong> Explain how Domain Name Servers function as the address book of the web (Std 4.3).</li>
+                                    <li><strong>Day 4: TCP vs. UDP Protocols</strong> Compare reliability vs. raw speed requirements for streaming video versus email file transfers.</li>
+                                    <li><strong>Day 5: Week 10 Protocols Assessment</strong> Review standards vocabulary and protocol behaviors.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="specs-sidebar">
+                            <div class="spec-item">
+                                <strong>Platform Target</strong>
+                                Code.org AI Foundations (Unit 2, Lessons 1 - 3)
+                            </div>
+                            <div class="spec-item">
+                                <strong>Key Terminology</strong>
+                                Internet Protocol (IP), Packet, Router, DNS, TCP, Redundancy, Latency
+                            </div>
+                            <div class="spec-item">
+                                <strong>Interactive Tool</strong>
+                                Code.org Internet Simulator (built-in widget).
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tip-box">
+                        <i class="fa-solid fa-circle-info"></i>
+                        <p><strong>First-Year Teacher Advice:</strong> Run the packet routing simulation as a physical class game. Give students paper envelopes representing data packets and have them route them through classroom desks (acting as routers). It makes abstract networking concepts highly memorable.</p>
+                    </div>
+                </div>
+            </details>
+
+            <!-- WEEK 11 -->
+            <details class="week-card">
+                <summary>
+                    <div class="summary-left">
+                        <div class="week-num">
+                            <span>Week</span>
+                            <span>11</span>
+                        </div>
+                        <div class="week-title-area">
+                            <h3>Networking Topologies &amp; Physical Systems</h3>
+                            <span class="week-subtitle">Analyzing physical structures, client-server models, and LAN vs WAN.</span>
+                        </div>
+                    </div>
+                    <div class="summary-right">
+                        <span class="source-indicator bg-ai">AI Foundations</span>
+                        <i class="fa-solid fa-chevron-down arrow-icon"></i>
+                    </div>
+                </summary>
+                <div class="card-content">
+                    <div class="content-grid">
+                        <div class="content-left">
+                            <div class="content-block">
+                                <h4><i class="fa-solid fa-crosshairs"></i> Weekly Objective &amp; Standards</h4>
+                                <div class="standards-list">
+                                    <span class="standard-tag">4.4 Topologies</span>
+                                    <span class="standard-tag">7.1 Server Structures</span>
+                                    <span class="standard-tag">7.2 System Configurations</span>
+                                </div>
+                                <p>Differentiate between physical layout topologies like star, mesh, and bus systems. Analyze hardware requirements for local (LAN) and wide-area networks (WAN), and explain the functional relationship between client workstations and servers.</p>
+                            </div>
+                            <div class="content-block">
+                                <h4><i class="fa-solid fa-calendar-day"></i> Suggested Daily Schedule</h4>
+                                <ul class="daily-outline">
+                                    <li><strong>Day 1: Network Topology Patterns</strong> Learn to structure Star, Mesh, Bus, and Ring topologies. Weigh cost vs redundancy tradeoffs (Std 4.4).</li>
+                                    <li><strong>Day 2: Client-Server Paradigms</strong> Map how client requests travel to secure backend server frames (Std 7.1).</li>
+                                    <li><strong>Day 3: Physical Networking Media</strong> Compare Ethernet, fiber, coax, and wireless frequencies. Discuss signal loss and transmission speed limits.</li>
+                                    <li><strong>Day 4: LAN vs WAN Mapping</strong> Design a complete network floorplan map for a modern business office (Std 7.2).</li>
+                                    <li><strong>Day 5: Week 11 Topology Review Lab</strong> Assessment of logical network designs.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="specs-sidebar">
+                            <div class="spec-item">
+                                <strong>Platform Target</strong>
+                                Code.org AI Foundations (Unit 2, Lessons 4 &amp; 5)
+                            </div>
+                            <div class="spec-item">
+                                <strong>Key Terminology</strong>
+                                Star Topology, Mesh, Bus, LAN, WAN, Client-Server Model, Transmission Media
+                            </div>
+                            <div class="spec-item">
+                                <strong>Assessment Tip</strong>
+                                Have students diagram the physical layout of your school's computer lab network.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tip-box">
+                        <i class="fa-solid fa-circle-info"></i>
+                        <p><strong>First-Year Teacher Advice:</strong> Modern enterprise networks rely almost entirely on physical Star or Star-Bus hybrids. Highlight that Mesh topologies, while highly resilient, are generally too expensive for standard schools to deploy.</p>
+                    </div>
+                </div>
+            </details>
+
+            <!-- WEEK 12 -->
+            <details class="week-card">
+                <summary>
+                    <div class="summary-left">
+                        <div class="week-num">
+                            <span>Week</span>
+                            <span>12</span>
+                        </div>
+                        <div class="week-title-area">
+                            <h3>Cloud Infrastructure &amp; Virtualization</h3>
+                            <span class="week-subtitle">Understanding service layers (SaaS, PaaS, IaaS) and system clouds.</span>
+                        </div>
+                    </div>
+                    <div class="summary-right">
+                        <span class="source-indicator bg-ai">AI Foundations</span>
+                        <i class="fa-solid fa-chevron-down arrow-icon"></i>
+                    </div>
+                </summary>
+                <div class="card-content">
+                    <div class="content-grid">
+                        <div class="content-left">
+                            <div class="content-block">
+                                <h4><i class="fa-solid fa-crosshairs"></i> Weekly Objective &amp; Standards</h4>
+                                <div class="standards-list">
+                                    <span class="standard-tag">8.1 Cloud Architecture</span>
+                                    <span class="standard-tag">8.2 Cloud Platforms</span>
+                                    <span class="standard-tag">8.3 SaaS / PaaS / IaaS</span>
+                                    <span class="standard-tag">8.4 Virtualization</span>
+                                </div>
+                                <p>Explore modern cloud infrastructure systems. Define how virtualization software partitions single physical servers into multiple virtual machines, and categorize common cloud services.</p>
+                            </div>
+                            <div class="content-block">
+                                <h4><i class="fa-solid fa-calendar-day"></i> Suggested Daily Schedule</h4>
+                                <ul class="daily-outline">
+                                    <li><strong>Day 1: What is "The Cloud"?</strong> Demystify the cloud by learning that it's simply servers in secure data centers (Std 8.1).</li>
+                                    <li><strong>Day 2: The Service Stack Triangle</strong> Differentiate Software as a Service, Platform as a Service, and Infrastructure as a Service (Std 8.3).</li>
+                                    <li><strong>Day 3: Virtualization Theory</strong> Explain hypervisors and virtual server setups. Highlight savings in space, heat, and physical hardware costs (Std 8.4).</li>
+                                    <li><strong>Day 4: Public, Private &amp; Hybrid Clouds</strong> Analyze trade-offs between hosting services publicly versus running secure local server farms.</li>
+                                    <li><strong>Day 5: Case Study: Enterprise Solutions</strong> Analyze business scenarios and pitch cloud migration strategies (Std 8.2).</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="specs-sidebar">
+                            <div class="spec-item">
+                                <strong>Platform Target</strong>
+                                Code.org AI Foundations (Unit 2, Lessons 6 - 8)
+                            </div>
+                            <div class="spec-item">
+                                <strong>Key Terminology</strong>
+                                Cloud Infrastructure, SaaS, PaaS, IaaS, Hypervisor, Virtualization, Server Farm
+                            </div>
+                            <div class="spec-item">
+                                <strong>Assessment Tip</strong>
+                                Ask students to research a common cloud tool (like Google Docs or Spotify) and classify its service level model.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tip-box">
+                        <i class="fa-solid fa-circle-info"></i>
+                        <p><strong>First-Year Teacher Advice:</strong> This unit targets a heavy TN standard block. Keep analogies simple: IaaS is buying raw lumber, PaaS is buying pre-cut furniture parts, and SaaS is buying a finished couch.</p>
+                    </div>
+                </div>
+            </details>
+
+            <!-- WEEK 13 -->
+            <details class="week-card">
+                <summary>
+                    <div class="summary-left">
+                        <div class="week-num">
+                            <span>Week</span>
+                            <span>13</span>
+                        </div>
+                        <div class="week-title-area">
+                            <h3>Data Structures &amp; Spreadsheet Analysis</h3>
+                            <span class="week-subtitle">Structuring structured data, sorting records, and cleaning logs.</span>
+                        </div>
+                    </div>
+                    <div class="summary-right">
+                        <span class="source-indicator bg-ai">AI Foundations</span>
+                        <i class="fa-solid fa-chevron-down arrow-icon"></i>
+                    </div>
+                </summary>
+                <div class="card-content">
+                    <div class="content-grid">
+                        <div class="content-left">
+                            <div class="content-block">
+                                <h4><i class="fa-solid fa-crosshairs"></i> Weekly Objective &amp; Standards</h4>
+                                <div class="standards-list">
+                                    <span class="standard-tag">17.1 Databases</span>
+                                    <span class="standard-tag">17.2 Data Formatting</span>
+                                    <span class="standard-tag">17.3 Data Ingestion</span>
+                                </div>
+                                <p>Explore data management workflows. Learn the differences between structured and unstructured datasets, and practice sorting, filtering, and cleaning data tables in spreadsheet platforms.</p>
+                            </div>
+                            <div class="content-block">
+                                <h4><i class="fa-solid fa-calendar-day"></i> Suggested Daily Schedule</h4>
+                                <ul class="daily-outline">
+                                    <li><strong>Day 1: Structured vs Unstructured Data</strong> Learn to classify structured databases, semi-structured JSON, and unstructured audio files (Std 17.1).</li>
+                                    <li><strong>Day 2: Formatting Clean Records</strong> Learn why system inputs need standardized formats (e.g., date formats, capitalized fields) (Std 17.2).</li>
+                                    <li><strong>Day 3: Spreadsheet Foundations</strong> Organize lists of tech assets using Google Sheets. Master column sorting and filtering rules.</li>
+                                    <li><strong>Day 4: Data Ingestion and CSV Imports</strong> Export database metrics into CSV files, and import them into local workspaces (Std 17.3).</li>
+                                    <li><strong>Day 5: Data Entry and Cleaning Assessment</strong> Grading lab tasks on sorting accuracy and record correction.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="specs-sidebar">
+                            <div class="spec-item">
+                                <strong>Platform Target</strong>
+                                Google Sheets or MS Excel Workspaces
+                            </div>
+                            <div class="spec-item">
+                                <strong>Key Terminology</strong>
+                                Database, CSV, Structured Data, Filter, Data Ingestion, Formatting Rules
+                            </div>
+                            <div class="spec-item">
+                                <strong>Interactive Tool</strong>
+                                Code.org Data Explorer Widget.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tip-box">
+                        <i class="fa-solid fa-circle-info"></i>
+                        <p><strong>First-Year Teacher Advice:</strong> This unit covers essential database standards. Use pre-made, slightly messy datasets (like class rosters with missing letters) so students can experience formatting and cleaning data firsthand.</p>
+                    </div>
+                </div>
+            </details>
+
+            <!-- WEEK 14 -->
+            <details class="week-card">
+                <summary>
+                    <div class="summary-left">
+                        <div class="week-num">
+                            <span>Week</span>
+                            <span>14</span>
+                        </div>
+                        <div class="week-title-area">
+                            <h3>Data Science &amp; Machine Learning Models</h3>
+                            <span class="week-subtitle">Training computers to recognize patterns inside complex datasets.</span>
+                        </div>
+                    </div>
+                    <div class="summary-right">
+                        <span class="source-indicator bg-ai">AI Foundations</span>
+                        <i class="fa-solid fa-chevron-down arrow-icon"></i>
+                    </div>
+                </summary>
+                <div class="card-content">
+                    <div class="content-grid">
+                        <div class="content-left">
+                            <div class="content-block">
+                                <h4><i class="fa-solid fa-crosshairs"></i> Weekly Objective &amp; Standards</h4>
+                                <div class="standards-list">
+                                    <span class="standard-tag">17.4 Analytics</span>
+                                    <span class="standard-tag">17.5 Data Visualization</span>
+                                    <span class="standard-tag">13.2 Algorithmic Design</span>
+                                </div>
+                                <p>Explore data analytics through the lens of modern Artificial Intelligence. Train machine learning classification engines, analyze testing splits, and generate clear visual reports of data trends.</p>
+                            </div>
+                            <div class="content-block">
+                                <h4><i class="fa-solid fa-calendar-day"></i> Suggested Daily Schedule</h4>
+                                <ul class="daily-outline">
+                                    <li><strong>Day 1: Intro to Machine Learning</strong> Differentiate traditional manual programming from machine learning training cycles (Std 13.2).</li>
+                                    <li><strong>Day 2: AI Lab "AI for Oceans" Training</strong> Train digital classification models to identify ocean trash, and evaluate classification performance.</li>
+                                    <li><strong>Day 3: Supervised vs Unsupervised Models</strong> Map visual examples of labeled datasets (supervised) versus clustered categorization models (unsupervised).</li>
+                                    <li><strong>Day 4: Creating Charts and Visualizations</strong> Build scatter plots, bar charts, and trend line graphs using Google Sheets or AI Lab exports (Std 17.5).</li>
+                                    <li><strong>Day 5: Model Design Lab Submissions</strong> Submit completed model diagnostic dashboards for grading.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="specs-sidebar">
+                            <div class="spec-item">
+                                <strong>Platform Target</strong>
+                                Code.org AI Lab / Google Teachable Machine
+                            </div>
+                            <div class="spec-item">
+                                <strong>Key Terminology</strong>
+                                Supervised Learning, Model Training, Feature, Scatter Plot, Dataset Split, Classification Accuracy
+                            </div>
+                            <div class="spec-item">
+                                <strong>Assessment Tip</strong>
+                                Students can capture Teachable Machine model training runs to document in their portfolios.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tip-box">
+                        <i class="fa-solid fa-circle-info"></i>
+                        <p><strong>First-Year Teacher Advice:</strong> Code.org's AI widgets are highly interactive. Help students understand that models are only as good as the data they are trained on: "Garbage In, Garbage Out."</p>
+                    </div>
+                </div>
+            </details>
+
+            <!-- WEEK 15 -->
+            <details class="week-card">
+                <summary>
+                    <div class="summary-left">
+                        <div class="week-num">
+                            <span>Week</span>
+                            <span>15</span>
+                        </div>
+                        <div class="week-title-area">
+                            <h3>Algorithmic Ethics &amp; Bias in AI</h3>
+                            <span class="week-subtitle">Unpacking model training biases and ethical design considerations.</span>
+                        </div>
+                    </div>
+                    <div class="summary-right">
+                        <span class="source-indicator bg-ai">AI Foundations</span>
+                        <i class="fa-solid fa-chevron-down arrow-icon"></i>
+                    </div>
+                </summary>
+                <div class="card-content">
+                    <div class="content-grid">
+                        <div class="content-left">
+                            <div class="content-block">
+                                <h4><i class="fa-solid fa-crosshairs"></i> Weekly Objective &amp; Standards</h4>
+                                <div class="standards-list">
+                                    <span class="standard-tag">13.1 Social Ethics</span>
+                                    <span class="standard-tag">13.2 Ethical AI Models</span>
+                                    <span class="standard-tag">13.3 Copyright Laws</span>
+                                </div>
+                                <p>Critically evaluate the societal impacts of computing systems. Study training biases, privacy issues related to user profiling, algorithmic fairness, intellectual property rules, and copyright legislation.</p>
+                            </div>
+                            <div class="content-block">
+                                <h4><i class="fa-solid fa-calendar-day"></i> Suggested Daily Schedule</h4>
+                                <ul class="daily-outline">
+                                    <li><strong>Day 1: What is Algorithmic Bias?</strong> Study real-world scenarios where models yielded skewed predictions due to non-representative training data (Std 13.2).</li>
+                                    <li><strong>Day 2: User Profiling &amp; Platform Data Practices</strong> Map how social platforms harvest user footprints to train ad-targeting engines.</li>
+                                    <li><strong>Day 3: Generative AI, Licensing &amp; IP Laws</strong> Discuss legal challenges surrounding copyright and generative models (Std 13.3).</li>
+                                    <li><strong>Day 4: Socratic Seminar on AI Ethics</strong> Structured student discussion arguing ethical frameworks, system transparency, and automated policing.</li>
+                                    <li><strong>Day 5: Synthesis Essay Lab Work</strong> Draft portfolio review articles on technology's societal impacts.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="specs-sidebar">
+                            <div class="spec-item">
+                                <strong>Platform Target</strong>
+                                Code.org AI Foundations (Unit 3, Lessons 1 - 4)
+                            </div>
+                            <div class="spec-item">
+                                <strong>Key Terminology</strong>
+                                Algorithmic Bias, Intellectual Property, Generative Model, Ethics Framework, Socratic Seminar
+                            </div>
+                            <div class="spec-item">
+                                <strong>Writing Focus</strong>
+                                1-page analytical reflection on AI safety policies.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tip-box">
+                        <i class="fa-solid fa-circle-info"></i>
+                        <p><strong>First-Year Teacher Advice:</strong> This ethics focus aligns directly with the May 2025 standards update. Run the Socratic seminar with simple, structured ground rules: students must reference specific class readings to support their points.</p>
+                    </div>
+                </div>
+            </details>
+
+            <!-- WEEK 16 -->
+            <details class="week-card">
+                <summary>
+                    <div class="summary-left">
+                        <div class="week-num">
+                            <span>Week</span>
+                            <span>16</span>
+                        </div>
+                        <div class="week-title-area">
+                            <h3>Cybersecurity &amp; System Defense Tactics</h3>
+                            <span class="week-subtitle">Learning common threat types, encryption, and defense strategies.</span>
+                        </div>
+                    </div>
+                    <div class="summary-right">
+                        <span class="source-indicator bg-ai">AI Foundations</span>
+                        <i class="fa-solid fa-chevron-down arrow-icon"></i>
+                    </div>
+                </summary>
+                <div class="card-content">
+                    <div class="content-grid">
+                        <div class="content-left">
+                            <div class="content-block">
+                                <h4><i class="fa-solid fa-crosshairs"></i> Weekly Objective &amp; Standards</h4>
+                                <div class="standards-list">
+                                    <span class="standard-tag">14.1 Network Threat Layers</span>
+                                    <span class="standard-tag">14.2 Phishing / Engineering</span>
+                                    <span class="standard-tag">14.3 Cyber Security Policies</span>
+                                </div>
+                                <p>Analyze modern cybersecurity practices. Categorize threat vectors like malware, ransomware, and social engineering, and study security controls including cryptography, multifactor authentication, and user access policies.</p>
+                            </div>
+                            <div class="content-block">
+                                <h4><i class="fa-solid fa-calendar-day"></i> Suggested Daily Schedule</h4>
+                                <ul class="daily-outline">
+                                    <li><strong>Day 1: The Cybersecurity Landscape</strong> Outline primary threat targets: Confidentiality, Integrity, and Availability (The CIA Triad) (Std 14.1).</li>
+                                    <li><strong>Day 2: Social Engineering &amp; Phishing Labs</strong> Study the mechanics of modern phishing campaigns and learn standard system validation checks (Std 14.2).</li>
+                                    <li><strong>Day 3: Cryptography Foundations</strong> Interactive Caesar Cipher practice, and mapping how symmetric vs. asymmetric keys secure Web HTTPS connections.</li>
+                                    <li><strong>Day 4: Institutional Security Policies</strong> Discuss the importance of password requirements, multi-factor authentication (MFA), and firewalls (Std 14.3).</li>
+                                    <li><strong>Day 5: Threat Response Case Analysis</strong> Assessment of business remediation plans following a mock data breach incident.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="specs-sidebar">
+                            <div class="spec-item">
+                                <strong>Platform Target</strong>
+                                Code.org AI Foundations (Unit 3, Lessons 5 - 8)
+                            </div>
+                            <div class="spec-item">
+                                <strong>Key Terminology</strong>
+                                Malware, Phishing, CIA Triad, Encryption Key, Multi-Factor Authentication, Firewall
+                            </div>
+                            <div class="spec-item">
+                                <strong>Assessment Tip</strong>
+                                Use free, interactive phishing identification quizzes (like Google's Jigsaw Phishing Quiz) for diagnostic checks.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tip-box">
+                        <i class="fa-solid fa-circle-info"></i>
+                        <p><strong>First-Year Teacher Advice:</strong> Emphasize that most security breaches are caused by human error (phishing) rather than sophisticated software attacks. This highlights why digital safety awareness is crucial for every organization.</p>
+                    </div>
+                </div>
+            </details>
+
+            <!-- WEEK 17 -->
+            <details class="week-card">
+                <summary>
+                    <div class="summary-left">
+                        <div class="week-num">
+                            <span>Week</span>
+                            <span>17</span>
+                        </div>
+                        <div class="week-title-area">
+                            <h3>Emerging Technologies &amp; Future Horizons</h3>
+                            <span class="week-subtitle">Reviewing the Internet of Things, Smart Devices, and tech roadmaps.</span>
+                        </div>
+                    </div>
+                    <div class="summary-right">
+                        <span class="source-indicator bg-ai">AI Foundations</span>
+                        <i class="fa-solid fa-chevron-down arrow-icon"></i>
+                    </div>
+                </summary>
+                <div class="card-content">
+                    <div class="content-grid">
+                        <div class="content-left">
+                            <div class="content-block">
+                                <h4><i class="fa-solid fa-crosshairs"></i> Weekly Objective &amp; Standards</h4>
+                                <div class="standards-list">
+                                    <span class="standard-tag">8.4 Virtualization Review</span>
+                                    <span class="standard-tag">8.5 Edge Tech</span>
+                                    <span class="standard-tag">8.6 Emerging Horizons</span>
+                                </div>
+                                <p>Synthesize trends in emerging technologies. Study edge networks, smart sensors (IoT), and automation, and explore how these tools change modern workflows and career paths.</p>
+                            </div>
+                            <div class="content-block">
+                                <h4><i class="fa-solid fa-calendar-day"></i> Suggested Daily Schedule</h4>
+                                <ul class="daily-outline">
+                                    <li><strong>Day 1: Edge Computing &amp; Smart Devices</strong> Differentiate centralized cloud hosting from distributed edge data processing (Std 8.5).</li>
+                                    <li><strong>Day 2: The Internet of Things (IoT)</strong> Analyze security, data bandwidth, and automation limits of modern connected home systems (Std 8.6).</li>
+                                    <li><strong>Day 3: Tech Horizon Roadmap Project</strong> Research future computing tools like quantum processors, biocomputing, and automated vehicles.</li>
+                                    <li><strong>Day 4: Formatting Research Summaries</strong> Draft and clean written research summaries to embed directly on student portfolio sites.</li>
+                                    <li><strong>Day 5: Week 17 Core Horizon Submissions</strong> Peer review and portfolio presentation polish.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="specs-sidebar">
+                            <div class="spec-item">
+                                <strong>Platform Target</strong>
+                                Code.org AI Foundations / Independent Portfolios
+                            </div>
+                            <div class="spec-item">
+                                <strong>Key Terminology</strong>
+                                Edge Node, Internet of Things, Automation, Quantum Architecture, Distributed Processing
+                            </div>
+                            <div class="spec-item">
+                                <strong>Writing Focus</strong>
+                                Emerging technology research summary uploaded to personal websites.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tip-box">
+                        <i class="fa-solid fa-circle-info"></i>
+                        <p><strong>First-Year Teacher Advice:</strong> Leverage the HTML/CSS skills students learned earlier. Have them publish this research project on their personal portfolio sites to show real web development experience.</p>
+                    </div>
+                </div>
+            </details>
+
+            <!-- WEEK 18 -->
+            <details class="week-card">
+                <summary>
+                    <div class="summary-left">
+                        <div class="week-num">
+                            <span>Week</span>
+                            <span>18</span>
+                        </div>
+                        <div class="week-title-area">
+                            <h3>Portfolio Capstone &amp; Career Exit Interviews</h3>
+                            <span class="week-subtitle">Presenting student portfolio sites and exploring next steps.</span>
+                        </div>
+                    </div>
+                    <div class="summary-right">
+                        <span class="source-indicator bg-web">CSD Web Design</span>
+                        <i class="fa-solid fa-chevron-down arrow-icon"></i>
+                    </div>
+                </summary>
+                <div class="card-content">
+                    <div class="content-grid">
+                        <div class="content-left">
+                            <div class="content-block">
+                                <h4><i class="fa-solid fa-crosshairs"></i> Weekly Objective &amp; Standards</h4>
+                                <div class="standards-list">
+                                    <span class="standard-tag">3.3 Professionalism</span>
+                                    <span class="standard-tag">12.2 Website Portfolios</span>
+                                    <span class="standard-tag">15.1 UX Review</span>
+                                </div>
+                                <p>Cap off the course by presenting personal portfolio sites. Students practice describing their work, participating in mock interviews, and exploring educational paths in computing.</p>
+                            </div>
+                            <div class="content-block">
+                                <h4><i class="fa-solid fa-calendar-day"></i> Suggested Daily Schedule</h4>
+                                <ul class="daily-outline">
+                                    <li><strong>Day 1: Final Web Quality Audits</strong> Run diagnostic test runs to ensure links, styles, and asset directories work correctly (Std 12.2).</li>
+                                    <li><strong>Day 2: Career Pitch Writing Work</strong> Students draft a 60-second elevator pitch summarizing their tech skills and career interests (Std 3.3).</li>
+                                    <li><strong>Day 3: Portfolio Capstone Presentations</strong> Students showcase their functional portfolio websites to the class.</li>
+                                    <li><strong>Day 4: CTE Mock Interview Practice</strong> Speed-interview practice using common industrial scenario questions.</li>
+                                    <li><strong>Day 5: Next Course Mapping &amp; Exit</strong> Wrap up student accounts, archive projects, and map next-level computing pathways.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="specs-sidebar">
+                            <div class="spec-item">
+                                <strong>Platform Target</strong>
+                                Live Web Portfolio Projects (Std 12.2)
+                            </div>
+                            <div class="spec-item">
+                                <strong>Key Terminology</strong>
+                                Quality Audit, Elevator Pitch, Career Prep, Mock Interview, Presentation Formats
+                            </div>
+                            <div class="spec-item">
+                                <strong>Capstone Goal</strong>
+                                Public presentation of completed computing artifacts.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tip-box">
+                        <i class="fa-solid fa-circle-info"></i>
+                        <p><strong>First-Year Teacher Advice:</strong> Invite administrators, school counselors, or local advisory board members to mock interview days. It's a great way to showcase student learning and build support for your program.</p>
+                    </div>
+                </div>
+            </details>
+
+        </div>
+    </main>
+
+</body>
+</html>
