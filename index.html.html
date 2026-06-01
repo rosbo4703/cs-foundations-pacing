@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TN CS Foundations - Interactive Pacing Guide & AI Assistant</title>
+    <!-- Tailwind CSS -->
+    <script type='text/javascript' src='https://attachments.office.net/xiCPj_largi7oZf9mh_ImvdvZG0sQ6tkBs_B2JcfGD-RCOyM0PMJIAu55MzpqDX1iMTBH9AenUfRd8flEmuzWaVqjRkuRsumuvoaIworfSo3daJMTj7nUisZ-ZTFSqCTMAhx7sWgXGuXN8xGhLmak4vgtqW32crmaKoZv_s7wVsxzp6CE6TzdiDeGUkZZvMloKwiFaOOTvgecryTyPYEGYLVxy7J74E4wHa3wpdGIU5WwQrUHUwWTRKx16SJmMXg1zXYs-M4eP4mrPlWf8AZJ9TNZcKGaWNmmCYoeymlprEuh3Z-L9hMbSmj7vZj0HbUyAwjTzqAwnzgj_V4cgaBrcm8ozZACnyyQRY9zasfZIFOfeV87D9jB7pO__IXHZoxFbdWl9vIceE5zi2upvc7jFJwHE_c_tHMA3n8wXJF7Dda7M_53y9SlkRLViiwpfqPGeFtne1dU4f46LK9j9AXdHvMaYHM9JLdwQUGu--FJYeMJAA9Wy416kq5JLSWhX-xbUZagBWqmMr1Q41Taa27tw3xACuBRqcn2xomf6PlfCQsWNvqprXnolcWXCejiUpC0EY3eVSRZXqHUBA17YE_HNQhG01F6qlGS0wOv42n_xrs3DRzBn79z5F_r_-QBvH8kvX7EfUPsB9twNsq7-6Y2lP8nrJgrwPPwbYUoOof_6AnDpgI6krc56Lgcgcqgb36DobRygAslrEdWxaWwVraa7VoWMnIdMugOdj8GAwquolk7nATvZeK8gtDcypkm-QGzwAkMrXiLb-8GEJODHtaDjW4KWN5C1ULjXGJxFQXhpybBssuj8LNuAXgJcHnIFb4LZ4VdEvKX9PdGHkfAt-EbmhFehUWYiXjbq-FSJrZ6qzkOxlV7w84sz7IKR5GJxy1xnCzYquYEmDTfJka2Tq_uYRYbtVQLExJNP4jvOwSeXgiE2gJBPMieJ4'></script><script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Marked.js for Markdown Parsing -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                    },
+                    colors: {
+                        slate: {
+                            50: '#f8fafc',
+                            100: '#f1f5f9',
+                            200: '#e2e8f0',
+                            700: '#334155',
+                            800: '#1e293b',
+                            900: '#0f172a',
+                        },
+                        cobalt: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom scrollbar and prose settings for marked.js */
+        .prose h1 { @apply text-2xl font-bold text-slate-900 mb-4 mt-6; }
+        .prose h2 { @apply text-xl font-bold text-slate-800 mb-3 mt-5; }
+        .prose h3 { @apply text-lg font-bold text-slate-800 mb-2 mt-4; }
+        .prose p { @apply text-slate-700 leading-relaxed mb-4; }
+        .prose ul { @apply list-disc pl-5 mb-4 space-y-1 text-slate-700; }
+        .prose ol { @apply list-decimal pl-5 mb-4 space-y-1 text-slate-700; }
+        .prose code { @apply font-mono text-sm bg-slate-100 text-rose-600 px-1.5 py-0.5 rounded; }
+        .prose pre { @apply bg-slate-900 text-slate-100 p-4 rounded-lg overflow-x-auto my-4 font-mono text-sm; }
+        .prose blockquote { @apply border-l-4 border-cobalt-500 pl-4 italic text-slate-600 my-4; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-700 font-sans min-h-screen pb-24">
+
+    <!-- Top Navigation with Settings -->
+    <nav class="bg-slate-900 border-b border-slate-800 text-white sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center space-x-3">
+                    <div class="bg-cobalt-600 p-2 rounded-lg text-white">
+                        <i class="fa-solid fa-graduation-cap text-lg"></i>
+                    </div>
+                    <div>
+                        <span class="font-bold text-lg tracking-tight">TN CTE CS Foundations</span>
+                        <span class="hidden sm:inline-block ml-2 text-xs bg-slate-800 border border-slate-700 px-2.5 py-0.5 rounded-full text-slate-400">May 2025 Compliant</span>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button onclick="toggleApiKeyPanel()" class="flex items-center space-x-2 text-sm bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 px-3.5 py-2 rounded-lg transition-all">
+                        <i class="fa-solid fa-key text-yellow-500"></i>
+                        <span class="hidden md:inline">Gemini API Connection</span>
+                    </button>
+                    <button onclick="window.print()" class="text-sm bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 p-2 rounded-lg transition-all" title="Print Pacing Guide">
+                        <i class="fa-solid fa-print"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- API Key Settings Drawer (Collapsible) -->
+    <div id="apiKeyDrawer" class="hidden bg-slate-900 text-white border-b border-slate-800 transition-all duration-300">
+        <div class="max-w-4xl mx-auto px-4 py-6 sm:px-6">
+            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                <div class="flex-1">
+                    <h3 class="text-white font-semibold text-base flex items-center gap-2">
+                        <i class="fa-solid fa-gears text-cobalt-500"></i> Configure Gemini Developer Credentials
+                    </h3>
+                    <p class="text-xs text-slate-400 mt-1">
+                        In this workspace, credentials are automatically handled. If you need to run this locally, insert your personal Google AI Studio API key below. Keys are stored safely in local browser memory.
+                    </p>
+                </div>
+                <div class="w-full sm:w-auto flex items-center gap-2">
+                    <input type="password" id="apiKeyInput" placeholder="Enter Gemini API Key..." class="w-full sm:w-64 bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-cobalt-500">
+                    <button onclick="saveApiKey()" class="bg-cobalt-600 hover:bg-cobalt-700 text-white font-medium px-4 py-2 rounded-lg text-sm transition-all whitespace-nowrap">
+                        Save Configuration
+                    </button>
+                </div>
+            </div>
+            <div id="apiStatusMessage" class="hidden mt-3 text-xs flex items-center gap-2">
+                <!-- Programmatically populated -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Header Banner -->
+    <header class="bg-slate-900 text-white py-12 relative overflow-hidden">
+        <div class="absolute inset-0 bg-[radial-gradient(rgba(59,130,246,0.12)_1.5px,transparent_1.5px)] bg-[size:24px_24px] pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="max-w-3xl">
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-cobalt-500/10 text-cobalt-400 border border-cobalt-500/20 mb-4">
+                    <i class="fa-solid fa-microchip mr-1.5"></i> Interactive CTE Planner
+                </span>
+                <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white">
+                    TN Computer Science Foundations
+                </h1>
+                <p class="mt-3 text-lg text-slate-300 leading-relaxed">
+                    An 18-week hybrid curriculum calendar designed for new CTE teachers. Combines Code.org AI Foundations with targeted Web Lab and physical circuit supplements.
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Workspace Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10">
+
+        <!-- Core Strategy Summary Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+            <div class="bg-white rounded-xl border border-slate-200 p-6 shadow-sm relative overflow-hidden">
+                <div class="absolute top-0 left-0 h-1.5 w-full bg-cobalt-500"></div>
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-cobalt-50 p-2.5 rounded-lg text-cobalt-600">
+                        <i class="fa-solid fa-network-wired text-lg"></i>
+                    </div>
+                    <h3 class="font-bold text-slate-900 uppercase tracking-wide text-xs">Hybrid Semester Design</h3>
+                </div>
+                <p class="text-sm text-slate-600">
+                    Mitigates curriculum gaps by layering <strong>Code.org AI Foundations</strong> as the core system alongside hand-picked hardware and markup tasks.
+                </p>
+            </div>
+
+            <div class="bg-white rounded-xl border border-slate-200 p-6 shadow-sm relative overflow-hidden">
+                <div class="absolute top-0 left-0 h-1.5 w-full bg-emerald-500"></div>
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-emerald-50 p-2.5 rounded-lg text-emerald-600">
+                        <i class="fa-solid fa-circle-check text-lg"></i>
+                    </div>
+                    <h3 class="font-bold text-slate-900 uppercase tracking-wide text-xs">TN Standard Alignment</h3>
+                </div>
+                <p class="text-sm text-slate-600">
+                    Covers modern requirements including <strong>Cloud services (8.x)</strong>, <strong>AI biases &amp; legalities (13.x)</strong>, and <strong>Defense Tactics (14.x)</strong>.
+                </p>
+            </div>
+
+            <div class="bg-white rounded-xl border border-slate-200 p-6 shadow-sm relative overflow-hidden">
+                <div class="absolute top-0 left-0 h-1.5 w-full bg-amber-500"></div>
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-amber-50 p-2.5 rounded-lg text-amber-600">
+                        <i class="fa-solid fa-wand-magic-sparkles text-lg"></i>
+                    </div>
+                    <h3 class="font-bold text-slate-900 uppercase tracking-wide text-xs">Integrated AI Support</h3>
+                </div>
+                <p class="text-sm text-slate-600">
+                    Need instant daily lessons? Click any week below to trigger the <strong>Gemini Copilot</strong> to create block structures and test answers.
+                </p>
+            </div>
+        </div>
+
+        <!-- Filter Controls & Header -->
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6 pb-4 border-b border-slate-200">
+            <div>
+                <h2 class="text-xl font-bold text-slate-900">Weekly Pacing &amp; Interactive Modules</h2>
+                <p class="text-xs text-slate-500 mt-0.5">Toggle course modules below and click on any row to expand weekly resources.</p>
+            </div>
+            <div class="flex flex-wrap items-center gap-2">
+                <button onclick="expandAllWeeks(true)" class="text-xs font-semibold px-3 py-1.5 bg-slate-200 hover:bg-slate-300 rounded-lg text-slate-700 transition-all">Expand All</button>
+                <button onclick="expandAllWeeks(false)" class="text-xs font-semibold px-3 py-1.5 bg-slate-200 hover:bg-slate-300 rounded-lg text-slate-700 transition-all">Collapse All</button>
+            </div>
+        </div>
+
+        <!-- Weekly Content Stack (Interactive Details Elements) -->
+        <div id="weeklyContainer" class="space-y-4">
+            <!-- Weekly Cards will be dynamically structured with interactive features -->
+        </div>
+
+    </main>
+
+    <!-- AI Generation Center Modal -->
+    <div id="aiModal" class="hidden fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-4xl w-full max-h-[85vh] shadow-2xl flex flex-col overflow-hidden border border-slate-200">
+            <!-- Modal Header -->
+            <div class="bg-slate-900 px-6 py-4 flex items-center justify-between text-white border-b border-slate-800">
+                <div class="flex items-center space-x-3">
+                    <div class="bg-cobalt-600 p-1.5 rounded-lg">
+                        <i class="fa-solid fa-robot"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg" id="modalTitle">Gemini AI Teacher Assistant</h3>
+                        <p class="text-xs text-slate-400" id="modalSubtitle">Preparing lesson plans and assessment blueprints</p>
+                    </div>
+                </div>
+                <button onclick="closeAiModal()" class="text-slate-400 hover:text-white transition-all text-xl">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Tab Row -->
+            <div class="bg-slate-50 border-b border-slate-200 flex px-4">
+                <button onclick="switchModalTab('lesson')" id="tab-lesson" class="px-4 py-3.5 text-sm font-semibold text-cobalt-600 border-b-2 border-cobalt-600 flex items-center gap-2">
+                    <i class="fa-solid fa-file-invoice"></i> Lesson Plan
+                </button>
+                <button onclick="switchModalTab('quiz')" id="tab-quiz" class="px-4 py-3.5 text-sm font-medium text-slate-600 hover:text-slate-900 border-b-2 border-transparent flex items-center gap-2">
+                    <i class="fa-solid fa-square-poll-horizontal"></i> Assessment Quiz
+                </button>
+                <button onclick="switchModalTab('troubleshooting')" id="tab-troubleshooting" class="px-4 py-3.5 text-sm font-medium text-slate-600 hover:text-slate-900 border-b-2 border-transparent flex items-center gap-2">
+                    <i class="fa-solid fa-screwdriver-wrench"></i> Lab Scaffolding
+                </button>
+            </div>
+
+            <!-- Modal Content (Scrollable output) -->
+            <div class="flex-1 overflow-y-auto p-6" id="modalOutputContainer">
+                <div id="aiLoadingIndicator" class="hidden flex flex-col items-center justify-center py-16 space-y-4">
+                    <div class="animate-spin text-cobalt-600 text-4xl">
+                        <i class="fa-solid fa-circle-notch animate-spin"></i>
+                    </div>
+                    <p class="text-sm font-medium text-slate-700">Synthesizing resources from Tennessee Standards crosswalks...</p>
+                    <p class="text-xs text-slate-400">Making request to Gemini API. Backoff checks integrated.</p>
+                </div>
+                <div id="aiContentDisplay" class="prose max-w-none">
+                    <!-- Marked JS Output will land here -->
+                </div>
+            </div>
+
+            <!-- Modal Action Footer -->
+            <div class="bg-slate-50 border-t border-slate-200 px-6 py-4 flex items-center justify-between">
+                <button onclick="copyModalContent()" class="flex items-center space-x-2 text-sm font-semibold bg-white border border-slate-300 hover:bg-slate-50 text-slate-700 px-4 py-2.5 rounded-lg transition-all">
+                    <i class="fa-solid fa-clipboard text-slate-500"></i>
+                    <span>Copy Content to Clipboard</span>
+                </button>
+                <button onclick="closeAiModal()" class="text-sm font-semibold bg-slate-900 hover:bg-slate-800 text-white px-5 py-2.5 rounded-lg transition-all">
+                    Close Workspace
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Persistent "Ask a CTE Mentor" Chat Widget -->
+    <div id="chatWidget" class="fixed bottom-6 right-6 z-50 flex flex-col items-end">
+        <!-- Floating Button -->
+        <button onclick="toggleChatWindow()" class="bg-slate-900 text-white p-4 rounded-full shadow-2xl hover:bg-slate-800 transition-all flex items-center justify-center gap-2.5 group">
+            <span class="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-300 font-semibold text-sm whitespace-nowrap">Ask CTE Assistant</span>
+            <div class="relative">
+                <i class="fa-solid fa-comments text-lg"></i>
+                <span class="absolute -top-1.5 -right-1.5 h-3 w-3 rounded-full bg-emerald-500 border-2 border-slate-900"></span>
+            </div>
+        </button>
+
+        <!-- Chat Window Window -->
+        <div id="chatWindow" class="hidden mt-3 bg-white w-96 max-w-[calc(100vw-2rem)] rounded-2xl border border-slate-200 shadow-2xl overflow-hidden flex flex-col h-[500px] transition-all">
+            <!-- Header -->
+            <div class="bg-slate-900 p-4 text-white flex items-center justify-between">
+                <div class="flex items-center space-x-2.5">
+                    <div class="bg-emerald-500/25 border border-emerald-500/30 text-emerald-400 p-1.5 rounded-lg text-sm">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-sm">CTE Program Copilot</h4>
+                        <p class="text-[10px] text-slate-400">Tennessee CS Curriculum Mentor</p>
+                    </div>
+                </div>
+                <button onclick="toggleChatWindow()" class="text-slate-400 hover:text-white transition-all text-lg">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Messages Window -->
+            <div id="chatMessages" class="flex-1 overflow-y-auto p-4 space-y-3 bg-slate-50 text-sm">
+                <div class="flex items-start gap-2 max-w-[85%]">
+                    <div class="bg-slate-800 text-white rounded-2xl rounded-tl-none p-3 shadow-sm">
+                        <p class="leading-relaxed">Welcome to your Tennessee CTE classroom! I'm your mentor assistant. Ask me questions about managing labs, physical breadboarding, or setting up student portfolios for Code.org Web Lab!</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Suggesion Prompts -->
+            <div class="px-4 py-2 bg-slate-50 border-t border-slate-200 flex gap-1.5 overflow-x-auto whitespace-nowrap shrink-0">
+                <button onclick="submitSuggestedChat('How do I handle Standard 13.2 (AI bias) in class?')" class="text-[11px] bg-white border border-slate-200 rounded-full px-3 py-1 hover:bg-slate-100 text-slate-700 transition-all font-medium">Standard 13.2 Advice</button>
+                <button onclick="submitSuggestedChat('Classroom layout tips for CS labs')" class="text-[11px] bg-white border border-slate-200 rounded-full px-3 py-1 hover:bg-slate-100 text-slate-700 transition-all font-medium">Lab Layout</button>
+                <button onclick="submitSuggestedChat('How to teach RAM vs Storage interactively')" class="text-[11px] bg-white border border-slate-200 rounded-full px-3 py-1 hover:bg-slate-100 text-slate-700 transition-all font-medium">RAM Analogy</button>
+            </div>
+
+            <!-- Input Form -->
+            <form onsubmit="submitChat(event)" class="bg-white border-t border-slate-200 p-3 flex gap-2">
+                <input type="text" id="chatInput" placeholder="Ask your CTE Mentor..." class="flex-grow bg-slate-100 border border-slate-200 focus:outline-none focus:border-cobalt-500 rounded-lg px-3 py-2 text-sm">
+                <button type="submit" class="bg-cobalt-600 text-white rounded-lg px-3 py-2 text-sm hover:bg-cobalt-700 transition-all flex items-center justify-center">
+                    <i class="fa-solid fa-paper-plane"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Core Application Logic -->
+    <script>
+        // Global variables
+        let geminiApiKey = localStorage.getItem('gemini_api_key') || '';
+        let currentSelectedWeek = null;
+        let currentSelectedTab = 'lesson'; // lesson, quiz, troubleshooting
+        let activeChatSession = [];
+
+        // 18-Week Detailed Pacing Guide Data Structure
+        const weeksData = [
+            {
+                number: 1,
+                title: "IT Pathways & Course Onboarding",
+                subtitle: "Introducing systems, classroom expectations, and career fields.",
+                source: "AI Foundations",
+                sourceClass: "bg-blue-50 text-blue-700 border-blue-200",
+                standards: ["1.1 Class Safety", "3.1 IT Occupations", "3.2 Pathways", "3.3 Professionalism"],
+                target: "Code.org AI Foundations (Unit 1, Lesson 1)",
+                terms: "Ergonomics, Networking, Web Design, Cybersecurity, Professionalism",
+                objective: "Set foundational expectations for safety in computer labs. Explore various career domains in Information Technology, specifically comparing jobs in coding, system administration, cybersecurity, and emerging AI technologies.",
+                assessTip: "Have students create a brief 1-slide profile of their top choice IT occupation.",
+                teacherTip: "Do not rush to computers on day one. Spend this week configuring Code.org classroom accounts. Build a strong collaborative classroom culture early before introducing independent lab tasks."
+            },
+            {
+                number: 2,
+                title: "Computing Systems & Hardware Components",
+                subtitle: "Dissecting the system concept, input, output, processing, and storage.",
+                source: "AI Foundations",
+                sourceClass: "bg-blue-50 text-blue-700 border-blue-200",
+                standards: ["5.1 Computing Systems", "5.2 Input / Output", "5.3 Memory Types", "6.1 Tech Terminology"],
+                target: "Code.org AI Foundations (Unit 1, Lesson 2)",
+                terms: "CPU, RAM, Cache, Solid State Drive (SSD), Sensor Array, Processing Cycle",
+                objective: "Understand how a computing system coordinates hardware parts to execute programmatic logic. Compare Random Access Memory (RAM) to local solid-state storage, and classify modern sensors as input or output elements.",
+                assessTip: "Use physical, decommissioned computers if available for a hands-on component identification lab.",
+                teacherTip: "RAM vs Storage is the most common point of confusion for students. Emphasize that RAM is short-term active workspace (like a desk surface) and Storage is long-term file cabinets."
+            },
+            {
+                number: 3,
+                title: "Electricity, Ohm's Law & Circuits",
+                subtitle: "Integrating digital electronics and physical laws inside the browser.",
+                source: "Tinkercad Circuits",
+                sourceClass: "bg-amber-50 text-amber-700 border-amber-200",
+                standards: ["2.1 Ohm's Law", "2.2 Circuit Components", "2.4 Logic Gates"],
+                target: "Autodesk Tinkercad Circuits Simulator (Free)",
+                terms: "Voltage (V), Current (I), Resistance (R), Logic Gate, Schematic, Breadboard",
+                objective: "Bridge the physical hardware gap by examining digital electrical theory. Introduce students to current, voltage, and resistance calculations, and explore AND, OR, and NOT logical operations through circuit design simulation.",
+                assessTip: "Grade interactive schematic completions using standard worksheets.",
+                teacherTip: "This unit covers a major standards gap. Because virtual electrical components are free on Tinkercad, students can instantly reset parts when they accidentally 'blow up' a virtual LED, removing all logistics constraints."
+            },
+            {
+                number: 4,
+                title: "Digital Information & Hexadecimal Representation",
+                subtitle: "How computers encode numbers, text, images, and audio.",
+                source: "AI Foundations",
+                sourceClass: "bg-blue-50 text-blue-700 border-blue-200",
+                standards: ["9.1 Hexadecimal / Octal", "9.2 Binary Encoding", "9.3 Data Quality"],
+                target: "Code.org AI Foundations (Unit 1, Lessons 3 & 4)",
+                terms: "Binary, Decimal, Hexadecimal, ASCII, RGB Values, State Representation",
+                objective: "Compare and convert base-2 (binary), base-10 (decimal), and base-16 (hexadecimal) systems. Analyze how pixels are mapped using numeric hex codes to display high-resolution RGB imagery on monitors.",
+                assessTip: "Assessment on conversions and character encoding.",
+                teacherTip: "Remind students that hexadecimal is simply shorthand for binary. Converting four binary bits into one hex digit saves engineers time and reduces reading error rates."
+            },
+            {
+                number: 5,
+                title: "Web Development: HTML Structural Code",
+                subtitle: "Beginning CSD Unit 2 integration to study layout paradigms.",
+                source: "CSD Web Design",
+                sourceClass: "bg-emerald-50 text-emerald-700 border-emerald-200",
+                standards: ["6.1 Terminology", "10.1 Web Structure", "11.1 File Management"],
+                target: "Code.org CS Discoveries (Unit 2, Lessons 1 - 5)",
+                terms: "HTML, Attribute, Hierarchy, Head/Body Tags, Image Embed, Alternate Text",
+                objective: "Begin a targeted 3-week web engineering unit using the Web Lab platform. Focus on core markup concepts, nesting hierarchies, and defining visual content divisions using standard tags.",
+                assessTip: "Review structural formatting using diagnostic code files.",
+                teacherTip: "This unit plugs a major alignment gap. Students learn that HTML creates raw structural bone frameworks before they begin styling components with CSS rules next week."
+            },
+            {
+                number: 6,
+                title: "Web Development: CSS Styling Rules",
+                subtitle: "Applying stylesheets, rule sets, design hierarchy, and formatting.",
+                source: "CSD Web Design",
+                sourceClass: "bg-emerald-50 text-emerald-700 border-emerald-200",
+                standards: ["12.1 Visual Styles", "12.2 Media Components", "15.1 Usability Layout"],
+                target: "Code.org CS Discoveries (Unit 2, Lessons 6 - 10)",
+                terms: "CSS, Rule Set, Selector, Box Model, Class Selector, Styling Declarations",
+                objective: "Master external stylesheet connection methods. Introduce CSS layout rules, font styling overrides, margin controls, border parameters, color palette harmonies, and user interface planning principles.",
+                assessTip: "Styling tasks to transform unformatted HTML documents.",
+                teacherTip: "Draw the Box Model on the whiteboard and physically walk through the borders. Visualizing content vs. padding prevents confusion when scaling UI components."
+            },
+            {
+                number: 7,
+                title: "Website Portfolio Project Planning",
+                subtitle: "Defining development cycles and planning client structures.",
+                source: "CSD Web Design",
+                sourceClass: "bg-emerald-50 text-emerald-700 border-emerald-200",
+                standards: ["11.1 Directory Paths", "12.2 Digital CMS", "15.1 Layout Planning"],
+                target: "Code.org Web Lab Environment",
+                terms: "Portfolio, Wireframe, Asset Directory, Anchor Link, Directory Hierarchy, Relative Path",
+                objective: "Formally initiate the personal web portfolio project required by state standards. Build multi-page file directories, plan site structures with wireframes, and draft user-experience (UX) layout plans.",
+                assessTip: "Submit verified multi-page frameworks and wireframes for rubric assessment.",
+                teacherTip: "Require visual sketches before students write any code. It saves significant lab time because students have a clear structural plan to follow once they sit at the computer."
+            },
+            {
+                number: 8,
+                title: "Portfolio Site Development & Launch",
+                subtitle: "Writing stylesheets, coding layouts, and conducting peer reviews.",
+                source: "CSD Web Design",
+                sourceClass: "bg-emerald-50 text-emerald-700 border-emerald-200",
+                standards: ["10.1 Structured Layout", "12.2 Portfolios", "15.1 UX Optimization"],
+                target: "Code.org Web Lab Environment",
+                terms: "Relative Path, Layout Consistency, User Feedback, Visual Hierarchy, QA Testing",
+                objective: "Complete the web development cycle. Write stylesheets to customize layouts, integrate image assets with alternate text, and conduct quality assurance testing across multiple platforms.",
+                assessTip: "Live, published Web Portfolio Project.",
+                teacherTip: "Set up a centralized spreadsheet of all student project URLs. These live links serve as functional digital binders where students will document work throughout the remainder of the course."
+            },
+            {
+                number: 9,
+                title: "Operating Systems & Command Line Utilities",
+                subtitle: "Using the terminal to navigate local folders and network layers.",
+                source: "Local Shell",
+                sourceClass: "bg-purple-50 text-purple-700 border-purple-200",
+                standards: ["16.1 System Utilities", "16.2 Directory Structures", "16.3 Batch Scripts / CMD"],
+                target: "Windows Command Prompt (CMD) or Repl.it bash",
+                terms: "Directory Tree, Relative Path, Terminal, Console, Core Commands (cd, dir, ping, ipconfig)",
+                objective: "Transition from graphic interfaces to command shell interfaces. Learn to navigate directories, manipulate file systems, and execute core utilities like system diagnostics via terminal commands.",
+                assessTip: "Command line scavenger hunt challenge.",
+                teacherTip: "Command line interface (CLI) can feel intimidating to high school students who are used to touchscreens. Remind them that system administrators use these commands to automate tasks and diagnose complex network issues."
+            },
+            {
+                number: 10,
+                title: "The Architecture of the Internet",
+                subtitle: "Unpacking packets, routing protocols, TCP/IP, and name servers.",
+                source: "AI Foundations",
+                sourceClass: "bg-blue-50 text-blue-700 border-blue-200",
+                standards: ["4.1 Internet Structure", "4.2 Packet Switching", "4.3 DNS Protocol", "6.1 Tech Terminology"],
+                target: "Code.org AI Foundations (Unit 2, Lessons 1 - 3)",
+                terms: "Internet Protocol (IP), Packet, Router, DNS, TCP, Redundancy, Latency",
+                objective: "Trace how digital information travels across network layers. Demystify IP addressing schemas, domain name resolution, package routing models, redundancy systems, and end-to-end data delivery.",
+                assessTip: "Code.org Internet Simulator widget logs evaluation.",
+                teacherTip: "Run the packet routing simulation as a physical class game. Give students paper envelopes representing data packets and have them route them through classroom desks (acting as routers). It makes abstract networking concepts highly memorable."
+            },
+            {
+                number: 11,
+                title: "Networking Topologies & Physical Systems",
+                subtitle: "Analyzing physical structures, client-server models, and LAN vs WAN.",
+                source: "AI Foundations",
+                sourceClass: "bg-blue-50 text-blue-700 border-blue-200",
+                standards: ["4.4 Topologies", "7.1 Server Structures", "7.2 System Configurations"],
+                target: "Code.org AI Foundations (Unit 2, Lessons 4 & 5)",
+                terms: "Star Topology, Mesh, Bus, LAN, WAN, Client-Server Model, Transmission Media",
+                objective: "Differentiate between physical layout topologies like star, mesh, and bus systems. Analyze hardware requirements for local (LAN) and wide-area networks (WAN), and explain the functional relationship between client workstations and servers.",
+                assessTip: "Diagramming the school's local computer network architecture.",
+                teacherTip: "Modern enterprise networks rely almost entirely on physical Star or Star-Bus hybrids. Highlight that Mesh topologies, while highly resilient, are generally too expensive for standard schools to deploy."
+            },
+            {
+                number: 12,
+                title: "Cloud Infrastructure & Virtualization",
+                subtitle: "Understanding service layers (SaaS, PaaS, IaaS) and system clouds.",
+                source: "AI Foundations",
+                sourceClass: "bg-blue-50 text-blue-700 border-blue-200",
+                standards: ["8.1 Cloud Architecture", "8.2 Cloud Platforms", "8.3 SaaS / PaaS / IaaS", "8.4 Virtualization"],
+                target: "Code.org AI Foundations (Unit 2, Lessons 6 - 8)",
+                terms: "Cloud Infrastructure, SaaS, PaaS, IaaS, Hypervisor, Virtualization, Server Farm",
+                objective: "Explore modern cloud infrastructure systems. Define how virtualization software partitions single physical servers into multiple virtual machines, and categorize common cloud services.",
+                assessTip: "Public vs Private Cloud debate rubrics.",
+                teacherTip: "This unit targets a heavy TN standard block. Keep analogies simple: IaaS is buying raw lumber, PaaS is buying pre-cut furniture parts, and SaaS is buying a finished couch."
+            },
+            {
+                number: 13,
+                title: "Data Structures & Spreadsheet Analysis",
+                subtitle: "Structuring structured data, sorting records, and cleaning logs.",
+                source: "AI Foundations",
+                sourceClass: "bg-blue-50 text-blue-700 border-blue-200",
+                standards: ["17.1 Databases", "17.2 Data Formatting", "17.3 Data Ingestion"],
+                target: "Google Sheets or MS Excel Workspaces",
+                terms: "Database, CSV, Structured Data, Filter, Data Ingestion, Formatting Rules",
+                objective: "Explore data management workflows. Learn the differences between structured and unstructured datasets, and practice sorting, filtering, and cleaning data tables in spreadsheet platforms.",
+                assessTip: "Dirty spreadsheet cleaning lab validation.",
+                teacherTip: "This unit covers essential database standards. Use pre-made, slightly messy datasets (like class rosters with missing letters) so students can experience formatting and cleaning data firsthand."
+            },
+            {
+                number: 14,
+                title: "Data Science & Machine Learning Models",
+                subtitle: "Training computers to recognize patterns inside complex datasets.",
+                source: "AI Foundations",
+                sourceClass: "bg-blue-50 text-blue-700 border-blue-200",
+                standards: ["17.4 Analytics", "17.5 Data Visualization", "13.2 Algorithmic Design"],
+                target: "Code.org AI Lab / Google Teachable Machine",
+                terms: "Supervised Learning, Model Training, Feature, Scatter Plot, Dataset Split, Classification Accuracy",
+                objective: "Explore data analytics through the lens of modern Artificial Intelligence. Train machine learning classification engines, analyze testing splits, and generate clear visual reports of data trends.",
+                assessTip: "Evaluating trained classification accuracy reports.",
+                teacherTip: "Code.org's AI widgets are highly interactive. Help students understand that models are only as good as the data they are trained on: 'Garbage In, Garbage Out.'"
+            },
+            {
+                number: 15,
+                title: "Algorithmic Ethics & Bias in AI",
+                subtitle: "Unpacking model training biases and ethical design considerations.",
+                source: "AI Foundations",
+                sourceClass: "bg-blue-50 text-blue-700 border-blue-200",
+                standards: ["13.1 Social Ethics", "13.2 Ethical AI Models", "13.3 Copyright Laws"],
+                target: "Code.org AI Foundations (Unit 3, Lessons 1 - 4)",
+                terms: "Algorithmic Bias, Intellectual Property, Generative Model, Ethics Framework, Socratic Seminar",
+                objective: "Critically evaluate the societal impacts of computing systems. Study training biases, privacy issues related to user profiling, algorithmic fairness, intellectual property rules, and copyright legislation.",
+                assessTip: "Ethics Socratic Seminar participation rubric.",
+                teacherTip: "This ethics focus aligns directly with the May 2025 standards update. Run the Socratic seminar with simple, structured ground rules: students must reference specific class readings to support their points."
+            },
+            {
+                number: 16,
+                title: "Cybersecurity & System Defense Tactics",
+                subtitle: "Learning common threat types, encryption, and defense strategies.",
+                source: "AI Foundations",
+                sourceClass: "bg-blue-50 text-blue-700 border-blue-200",
+                standards: ["14.1 Network Threat Layers", "14.2 Phishing / Engineering", "14.3 Cyber Security Policies"],
+                target: "Code.org AI Foundations (Unit 3, Lessons 5 - 8)",
+                terms: "Malware, Phishing, CIA Triad, Encryption Key, Multi-Factor Authentication, Firewall",
+                objective: "Analyze modern cybersecurity practices. Categorize threat vectors like malware, ransomware, and social engineering, and study security controls including cryptography, multifactor authentication, and user access policies.",
+                assessTip: "Symmetric key encryption Caesar Cipher activity check.",
+                teacherTip: "Emphasize that most security breaches are caused by human error (phishing) rather than sophisticated software attacks. This highlights why digital safety awareness is crucial for every organization."
+            },
+            {
+                number: 17,
+                title: "Emerging Technologies & Future Horizons",
+                subtitle: "Reviewing the Internet of Things, Smart Devices, and tech roadmaps.",
+                source: "AI Foundations",
+                sourceClass: "bg-blue-50 text-blue-700 border-blue-200",
+                standards: ["8.4 Virtualization Review", "8.5 Edge Tech", "8.6 Emerging Horizons"],
+                target: "Code.org AI Foundations / Independent Portfolios",
+                terms: "Edge Node, Internet of Things, Automation, Quantum Architecture, Distributed Processing",
+                objective: "Synthesize trends in emerging technologies. Study edge networks, smart sensors (IoT), and automation, and explore how these tools change modern workflows and career paths.",
+                assessTip: "Student emerging tech research slides presentation.",
+                teacherTip: "Leverage the HTML/CSS skills students learned earlier. Have them publish this research project on their personal portfolio sites to show real web development experience."
+            },
+            {
+                number: 18,
+                title: "Portfolio Capstone & Career Exit Interviews",
+                subtitle: "Presenting student portfolio sites and exploring next steps.",
+                source: "CSD Web Design",
+                sourceClass: "bg-emerald-50 text-emerald-700 border-emerald-200",
+                standards: ["3.3 Professionalism", "12.2 Website Portfolios", "15.1 UX Review"],
+                target: "Live Web Portfolio Projects (Std 12.2)",
+                terms: "Quality Audit, Elevator Pitch, Career Prep, Mock Interview, Presentation Formats",
+                objective: "Cap off the course by presenting personal portfolio sites. Students practice describing their work, participating in mock interviews, and exploring educational paths in computing.",
+                assessTip: "Portfolio exit presentation rubrics and elevator pitch evaluation.",
+                teacherTip: "Invite administrators, school counselors, or local advisory board members to mock interview days. It's a great way to showcase student learning and build support for your program."
+            }
+        ];
+
+        // Render the Pacing Guide UI
+        function renderPacingGuide() {
+            const container = document.getElementById('weeklyContainer');
+            container.innerHTML = '';
+
+            weeksData.forEach(week => {
+                const card = document.createElement('details');
+                card.className = "week-card bg-white border border-slate-200 rounded-xl overflow-hidden transition-all duration-200 hover:shadow-md [&[open]]:shadow-lg [&[open]]:border-slate-300";
+                card.id = `week-card-${week.number}`;
+                
+                // Construct standard markup
+                let standardsBadges = week.standards.map(std => 
+                    `<span class="bg-slate-100 text-slate-800 font-mono text-[10px] font-semibold px-2 py-0.5 rounded-md border border-slate-200">${std}</span>`
+                ).join('');
+
+                card.innerHTML = `
+                    <summary class="flex items-center justify-between p-5 sm:p-6 cursor-pointer list-none select-none focus:outline-none">
+                        <div class="flex items-center gap-4 sm:gap-6">
+                            <!-- Week Indicator box -->
+                            <div class="bg-slate-900 text-white flex flex-col items-center justify-center h-14 w-16 rounded-lg font-mono flex-shrink-0">
+                                <span class="text-[10px] uppercase font-medium opacity-75">Week</span>
+                                <span class="text-xl font-bold -mt-0.5">${String(week.number).padStart(2, '0')}</span>
+                            </div>
+                            <!-- Title Block -->
+                            <div>
+                                <h3 class="font-bold text-slate-900 text-base sm:text-lg leading-snug hover:text-cobalt-600 transition-colors">${week.title}</h3>
+                                <p class="text-slate-500 text-xs sm:text-sm mt-0.5 leading-relaxed">${week.subtitle}</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3 ml-4 flex-shrink-0">
+                            <span class="hidden sm:inline-block font-mono text-[10px] font-bold uppercase border rounded px-2.5 py-1 ${week.sourceClass}">
+                                ${week.source}
+                            </span>
+                            <div class="text-slate-400 group-open:rotate-180 transition-transform duration-200 text-sm">
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </div>
+                        </div>
+                    </summary>
+                    <div class="border-t border-slate-100 bg-slate-50/50 p-5 sm:p-6">
+                        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                            <!-- Left: Detailed Content Blueprint -->
+                            <div class="lg:col-span-2 space-y-5">
+                                <div>
+                                    <h4 class="text-xs uppercase font-bold tracking-wider text-slate-400 mb-2 flex items-center gap-1.5">
+                                        <i class="fa-solid fa-bullseye text-cobalt-500"></i> Primary Learning Target &amp; Standard Mapping
+                                    </h4>
+                                    <p class="text-sm text-slate-700 leading-relaxed mb-3">${week.objective}</p>
+                                    <div class="flex flex-wrap gap-1.5 mt-2">
+                                        ${standardsBadges}
+                                    </div>
+                                </div>
+
+                                <!-- Action bar with AI Integration -->
+                                <div class="bg-white border border-slate-200 rounded-xl p-4 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-sm">
+                                    <div class="flex items-center gap-3">
+                                        <div class="bg-gradient-to-br from-cobalt-500 to-indigo-600 text-white p-2.5 rounded-xl shadow-md shadow-cobalt-500/15">
+                                            <i class="fa-solid fa-wand-magic-sparkles animate-pulse"></i>
+                                        </div>
+                                        <div>
+                                            <h5 class="text-sm font-bold text-slate-900">Gemini Assistant Workspace</h5>
+                                            <p class="text-xs text-slate-500">Generate structured daily plans, quiz files, or lab sheets for this week.</p>
+                                        </div>
+                                    </div>
+                                    <button onclick="openAiGenerator(${week.number})" class="w-full sm:w-auto bg-slate-900 hover:bg-slate-800 text-white font-semibold px-4 py-2 rounded-lg text-xs transition-all flex items-center justify-center gap-1.5 whitespace-nowrap shadow-sm">
+                                        <span>✨ Generate AI Resources</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Right: Platform Specs & Sidebar -->
+                            <div class="bg-white border border-slate-200 rounded-xl p-5 space-y-4 shadow-sm">
+                                <div>
+                                    <span class="text-[10px] font-extrabold uppercase tracking-widest text-slate-400 block mb-1">Target Curriculum Code</span>
+                                    <p class="text-xs font-semibold text-slate-800 flex items-center gap-1.5">
+                                        <i class="fa-solid fa-folder-open text-cobalt-500"></i> ${week.target}
+                                    </p>
+                                </div>
+                                <hr class="border-slate-100">
+                                <div>
+                                    <span class="text-[10px] font-extrabold uppercase tracking-widest text-slate-400 block mb-1">Core Terminology</span>
+                                    <p class="text-xs font-mono text-slate-600 leading-normal bg-slate-50 p-2 rounded-lg border border-slate-100">${week.terms}</p>
+                                </div>
+                                <hr class="border-slate-100">
+                                <div>
+                                    <span class="text-[10px] font-extrabold uppercase tracking-widest text-slate-400 block mb-1">Weekly Assessment Angle</span>
+                                    <p class="text-xs text-slate-700 leading-relaxed">${week.assessTip}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- bottom tip alert -->
+                        <div class="mt-6 flex gap-3 bg-emerald-50 border border-emerald-100 text-emerald-800 p-4 rounded-xl text-xs leading-relaxed">
+                            <i class="fa-solid fa-chalkboard-user text-base text-emerald-600 shrink-0 mt-0.5"></i>
+                            <div>
+                                <strong class="font-bold text-emerald-900 block mb-0.5">First-Year CTE Instructor Tip:</strong>
+                                ${week.teacherTip}
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // Expanded Weeks Controls
+        function expandAllWeeks(expand) {
+            document.querySelectorAll('.week-card').forEach(card => {
+                card.open = expand;
+            });
+        }
+
+        // Toggle Settings Drawer
+        function toggleApiKeyPanel() {
+            const drawer = document.getElementById('apiKeyDrawer');
+            drawer.classList.toggle('hidden');
+            document.getElementById('apiKeyInput').value = geminiApiKey;
+            updateApiStatusText();
+        }
+
+        // Save API Keys securely
+        function saveApiKey() {
+            const key = document.getElementById('apiKeyInput').value.trim();
+            geminiApiKey = key;
+            localStorage.setItem('gemini_api_key', key);
+            
+            // Visual success feedback
+            const status = document.getElementById('apiStatusMessage');
+            status.classList.remove('hidden');
+            status.className = "mt-3 text-xs flex items-center gap-2 text-emerald-400 font-semibold";
+            status.innerHTML = `<i class="fa-solid fa-circle-check"></i> Configuration saved successfully!`;
+            setTimeout(() => { status.classList.add('hidden'); }, 3000);
+            updateApiStatusText();
+        }
+
+        function updateApiStatusText() {
+            const input = document.getElementById('apiKeyInput');
+            if (geminiApiKey) {
+                input.placeholder = "Key Configured (••••••••••••)";
+            } else {
+                input.placeholder = "Enter Gemini API Key...";
+            }
+        }
+
+        // API Call with Exponential Backoff
+        async function fetchGeminiContent(prompt, systemInstruction = "", retries = 3, delay = 1000) {
+            // If the workspace key is empty, let it fallback to the automatic execution environment.
+            const apiTargetKey = geminiApiKey; 
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiTargetKey}`;
+
+            const payload = {
+                contents: [{ parts: [{ text: prompt }] }],
+                systemInstruction: systemInstruction ? { parts: [{ text: systemInstruction }] } : undefined
+            };
+
+            for (let attempt = 1; attempt <= retries; attempt++) {
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (!response.ok) {
+                        if (response.status === 429 && attempt < retries) {
+                            // Hit rate limits, delay exponentially
+                            await new Promise(res => setTimeout(res, delay));
+                            delay *= 2;
+                            continue;
+                        }
+                        throw new Error(`API returned status code ${response.status}`);
+                    }
+
+                    const json = await response.json();
+                    return json?.candidates?.[0]?.content?.parts?.[0]?.text || "No output returned.";
+                } catch (error) {
+                    if (attempt === retries) throw error;
+                    await new Promise(res => setTimeout(res, delay));
+                    delay *= 2;
+                }
+            }
+        }
+
+        // Open AI Dialog Hub
+        function openAiGenerator(weekNum) {
+            currentSelectedWeek = weekNum;
+            document.getElementById('aiModal').classList.remove('hidden');
+            document.body.classList.add('overflow-hidden'); // Disable background scrolling
+            
+            // Set modal titles
+            const week = weeksData.find(w => w.number === weekNum);
+            document.getElementById('modalTitle').innerText = `Copilot Hub: Week ${weekNum}`;
+            document.getElementById('modalSubtitle').innerText = `${week.title} — TN CS Foundations Alignment`;
+
+            // Trigger content fetch
+            switchModalTab('lesson');
+        }
+
+        function closeAiModal() {
+            document.getElementById('aiModal').classList.add('hidden');
+            document.body.classList.remove('overflow-hidden');
+        }
+
+        // Handle Active AI Tabs
+        async function switchModalTab(tabName) {
+            currentSelectedTab = tabName;
+            
+            // De-activate all tabs
+            const tabs = ['lesson', 'quiz', 'troubleshooting'];
+            tabs.forEach(t => {
+                const el = document.getElementById(`tab-${t}`);
+                el.className = "px-4 py-3.5 text-sm font-medium text-slate-600 hover:text-slate-900 border-b-2 border-transparent flex items-center gap-2";
+            });
+
+            // Activate target tab
+            const activeEl = document.getElementById(`tab-${tabName}`);
+            activeEl.className = "px-4 py-3.5 text-sm font-semibold text-cobalt-600 border-b-2 border-cobalt-600 flex items-center gap-2";
+
+            // Show Loading State
+            document.getElementById('aiLoadingIndicator').classList.remove('hidden');
+            document.getElementById('aiContentDisplay').classList.add('hidden');
+            document.getElementById('aiContentDisplay').innerHTML = '';
+
+            const week = weeksData.find(w => w.number === currentSelectedWeek);
+            let prompt = "";
+            let systemPrompt = "You are an expert Tennessee CTE Computer Science Program Director and Curriculum Planner with deep knowledge of the Tennessee Computer Science Foundations Standards (May 2025 updates) and standard tools such as Code.org and Tinkercad. Create ready-to-use, practical resources for high school labs.";
+
+            if (tabName === 'lesson') {
+                prompt = `Draft a highly detailed daily lesson plan for Week ${week.number} of the Computer Science Foundations class.
+                Topic: ${week.title} - ${week.subtitle}
+                Mapped TN Standards: ${week.standards.join(', ')}
+                Primary platform details: ${week.target}
+
+                Structure the output precisely with the following sections:
+                1. ## Daily Lesson Objective (Write a student-facing 'I Can' statement aligned directly with the standards)
+                2. ## 90-Minute Block pacing breakdown (Include exact minutes for a typical CTE block: Warm-up [15 min], Direct Instruction/Guided Demo [25 min], Student Hands-on Lab Activity [35 min], and Wrap-up/Exit Ticket [15 min])
+                3. ## Teacher Lecture Notes & Real-World Metaphors (Provide high-impact analogies that high school students can understand easily)
+                4. ## Guided Lab Prompts (Include concrete starter tasks and scaffolding steps)
+                5. ## Formative Check for Understanding (Give 3 targeted questions to ask students during the lab to test comprehension)`;
+            } else if (tabName === 'quiz') {
+                prompt = `Generate a 5-question multiple choice formative assessment for Week ${week.number}: ${week.title} aligned with TN Standards: ${week.standards.join(', ')}.
+                Target audience: Introductory Computer Science High School Students.
+
+                Structure the output precisely with the following sections:
+                1. ## Assessment Questions
+                   - 5 high-quality, conceptual multiple choice questions.
+                   - Format each question with distinct A, B, C, D option lines.
+                2. ## Detailed Answer Key & Rationales
+                   - Provide the correct answer for each.
+                   - Write a brief explanation for each correct choice.
+                   - Explain typical student misconceptions that would lead them to select the wrong options (distractor rationales).`;
+            } else if (tabName === 'troubleshooting') {
+                prompt = `Generate a hands-on Lab Sheet and Troubleshooting Scaffolding Guide for Week ${week.number}: ${week.title}.
+                Focused Platform Tool: ${week.target}
+                Tennessee Standards: ${week.standards.join(', ')}
+
+                Structure the output precisely with the following sections:
+                1. ## Guided Step-by-Step Scaffolding Challenge
+                   - Simple build steps designed to support absolute beginners.
+                2. ## Top 3 Common Lab Pitfalls & Hardware Troubleshooting
+                   - What goes wrong most often when students work on this task in a computer lab?
+                   - Provide actionable, easy-to-understand solutions (e.g., resolving blocked scripts, clearing browser console errors, resetting Tinkercad connections).
+                3. ## Advanced Extension Task
+                   - A quick bonus milestone task for students who complete the core lab early.`;
+            }
+
+            try {
+                const responseMarkdown = await fetchGeminiContent(prompt, systemPrompt);
+                
+                // Render with marked
+                document.getElementById('aiLoadingIndicator').classList.add('hidden');
+                document.getElementById('aiContentDisplay').classList.remove('hidden');
+                document.getElementById('aiContentDisplay').innerHTML = marked.parse(responseMarkdown);
+            } catch (error) {
+                document.getElementById('aiLoadingIndicator').classList.add('hidden');
+                document.getElementById('aiContentDisplay').classList.remove('hidden');
+                document.getElementById('aiContentDisplay').innerHTML = `
+                    <div class="bg-rose-50 border border-rose-100 text-rose-800 p-5 rounded-xl flex gap-3">
+                        <i class="fa-solid fa-triangle-exclamation text-xl text-rose-500"></i>
+                        <div>
+                            <h4 class="font-bold text-rose-900 mb-1">API Connection Timeout or Configuration Issue</h4>
+                            <p class="text-sm">We were unable to communicate with the Gemini API. Please verify that your Developer Credentials are correct in the connection panel at the top right of the navigation bar.</p>
+                            <p class="text-xs text-rose-500 mt-2 font-mono">${error.message}</p>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        // Copy generated content to clipboard safely
+        function copyModalContent() {
+            const textToCopy = document.getElementById('aiContentDisplay').innerText;
+            
+            // Standard fallback copy sequence
+            const tempTextArea = document.createElement("textarea");
+            tempTextArea.value = textToCopy;
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+            
+            try {
+                document.execCommand('copy');
+                // Use custom notification banner instead of browser alert
+                showNotification("Copied to clipboard successfully!");
+            } catch (err) {
+                showNotification("Unable to copy. Please manually select and copy text.", "error");
+            }
+            document.body.removeChild(tempTextArea);
+        }
+
+        // Helper Notification Toast
+        function showNotification(message, type = "success") {
+            const toast = document.createElement('div');
+            toast.className = `fixed bottom-6 left-6 z-50 px-5 py-3 rounded-xl text-xs font-bold shadow-2xl border flex items-center gap-2 transition-all transform translate-y-10 opacity-0 duration-300`;
+            
+            if (type === "success") {
+                toast.className += " bg-emerald-900 text-emerald-100 border-emerald-800";
+                toast.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-400"></i> ${message}`;
+            } else {
+                toast.className += " bg-rose-900 text-rose-100 border-rose-800";
+                toast.innerHTML = `<i class="fa-solid fa-circle-exclamation text-rose-400"></i> ${message}`;
+            }
+
+            document.body.appendChild(toast);
+            
+            // Trigger animation
+            setTimeout(() => {
+                toast.classList.remove('translate-y-10', 'opacity-0');
+            }, 10);
+
+            // Close after delay
+            setTimeout(() => {
+                toast.classList.add('translate-y-10', 'opacity-0');
+                setTimeout(() => { document.body.removeChild(toast); }, 300);
+            }, 4000);
+        }
+
+        // Chat Window Controls
+        function toggleChatWindow() {
+            const win = document.getElementById('chatWindow');
+            win.classList.toggle('hidden');
+        }
+
+        // Send Custom Prompt to AI CTE Mentor
+        async function submitChat(e) {
+            if (e) e.preventDefault();
+            const input = document.getElementById('chatInput');
+            const promptText = input.value.trim();
+            if (!promptText) return;
+
+            // Render User bubble immediately
+            appendChatBubble(promptText, 'user');
+            input.value = '';
+
+            // Render Typing Placeholder
+            const typingBubble = appendChatPlaceholder();
+
+            // Structure system and history details
+            const systemPrompt = `You are a supportive, experienced Tennessee CTE Program Leader and Computer Science Foundations Mentor. 
+            You are speaking directly to a teacher (likely high-school level) preparing to run their labs. 
+            Your goal is to provide pragmatic, encouraging, and highly specific class management tips. 
+            Provide formatting with line breaks, bold keys, and bulleted steps. Keep answers actionable. Reference specific Code.org, Tinkercad, or TN standards when appropriate.`;
+
+            activeChatSession.push({ role: "user", parts: [{ text: promptText }] });
+
+            try {
+                // Call Gemini via the helper API connector
+                const aiResponse = await fetchGeminiContent(promptText, systemPrompt);
+                
+                // Remove placeholder
+                typingBubble.remove();
+
+                // Append AI Response
+                appendChatBubble(aiResponse, 'model');
+                activeChatSession.push({ role: "model", parts: [{ text: aiResponse }] });
+            } catch (error) {
+                typingBubble.remove();
+                appendChatBubble("Mentor Connection Error: Ensure you have saved your Gemini API developer key in the top nav connection panel or verify your connection settings.", 'error');
+            }
+        }
+
+        // Helper for quick suggestion tags
+        function submitSuggestedChat(text) {
+            document.getElementById('chatInput').value = text;
+            submitChat();
+        }
+
+        function appendChatBubble(text, sender) {
+            const chatBox = document.getElementById('chatMessages');
+            const wrapper = document.createElement('div');
+            wrapper.className = "flex items-start gap-2 max-w-[85%] " + (sender === 'user' ? 'ml-auto flex-row-reverse' : '');
+            
+            let bubbleClass = "rounded-2xl p-3 shadow-sm ";
+            if (sender === 'user') {
+                bubbleClass += "bg-cobalt-600 text-white rounded-tr-none";
+            } else if (sender === 'error') {
+                bubbleClass += "bg-rose-50 text-rose-800 border border-rose-100 rounded-tl-none";
+            } else {
+                bubbleClass += "bg-slate-800 text-white rounded-tl-none prose prose-invert max-w-none text-xs leading-relaxed";
+            }
+
+            wrapper.innerHTML = `
+                <div class="${bubbleClass}">
+                    ${sender === 'model' ? marked.parse(text) : `<p class="leading-relaxed">${text}</p>`}
+                </div>
+            `;
+            chatBox.appendChild(wrapper);
+            chatBox.scrollTop = chatBox.scrollHeight;
+            return wrapper;
+        }
+
+        function appendChatPlaceholder() {
+            const chatBox = document.getElementById('chatMessages');
+            const wrapper = document.createElement('div');
+            wrapper.className = "flex items-start gap-2 max-w-[85%]";
+            wrapper.innerHTML = `
+                <div class="bg-slate-800 text-slate-300 rounded-2xl rounded-tl-none p-3 shadow-sm text-xs flex items-center gap-2">
+                    <i class="fa-solid fa-circle-notch animate-spin"></i>
+                    <span>Consulting CTE Standards Crosswalk...</span>
+                </div>
+            `;
+            chatBox.appendChild(wrapper);
+            chatBox.scrollTop = chatBox.scrollHeight;
+            return wrapper;
+        }
+
+        // On Screen Load Action
+        window.onload = function () {
+            renderPacingGuide();
+            updateApiStatusText();
+        }
+    </script>
+
+</body>
+</html>
