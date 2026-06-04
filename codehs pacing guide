@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TN Computer Science Foundations - 18-Week Interactive Pacing Guide</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #f1f5f9; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col antialiased">
+
+    <header class="bg-slate-900 text-white sticky top-0 z-50 shadow-md border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="bg-indigo-600 p-2 rounded-lg text-white">
+                    <i data-lucide="terminal" class="w-6 h-6"></i>
+                </div>
+                <div>
+                    <h1 class="text-lg font-bold tracking-tight">Computer Science Foundations</h1>
+                    <p class="text-xs text-slate-400 font-medium">18-Week CodeHS Master Pacing Guide</p>
+                </div>
+            </div>
+            <div class="flex items-center space-x-4">
+                <span class="inline-flex items-center bg-slate-800 text-slate-300 text-xs font-semibold px-2.5 py-1 rounded-full border border-slate-700">
+                    <span class="w-2 h-2 mr-1.5 bg-emerald-500 rounded-full animate-pulse"></span>
+TN CTE Aligned
+                </span>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex-grow py-8 w-full grid grid-cols-1 lg:grid-cols-4 gap-8">
+        
+        <aside class="lg:col-span-1 space-y-6">
+            <div class="bg-white p-6 rounded-xl shadow-xs border border-slate-200 sticky top-24 space-y-6">
+                <div>
+                    <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Pacing Metrics</h3>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center bg-slate-50 p-3 rounded-lg border border-slate-100">
+                            <span class="text-sm font-medium text-slate-600">Total Duration</span>
+                            <span class="text-sm font-bold text-slate-900">18 Weeks</span>
+                        </div>
+                        <div class="flex justify-between items-center bg-slate-50 p-3 rounded-lg border border-slate-100">
+                            <span class="text-sm font-medium text-slate-600">Contact Hours</span>
+                            <span class="text-sm font-bold text-slate-900">140 Hours</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="flex justify-between items-center mb-1.5">
+                        <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">Course Progress</h4>
+                        <span id="progress-percent" class="text-xs font-bold text-indigo-600">0%</span>
+                    </div>
+                    <div class="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden">
+                        <div id="progress-bar" class="bg-indigo-600 h-2.5 rounded-full transition-all duration-500 ease-out" style="width: 0%"></div>
+                    </div>
+                    <p class="text-[11px] text-slate-400 mt-2 flex items-center justify-between">
+                        <span>Check weeks to update stats</span>
+                        <span id="progress-fraction">0 / 18 Weeks</span>
+                    </p>
+                </div>
+
+                <hr class="border-slate-100">
+
+                <div class="space-y-4">
+                    <div>
+                        <label for="search" class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Search Curriculum</label>
+                        <div class="relative rounded-md shadow-xs">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <i data-lucide="search" class="h-4 w-4 text-slate-400"></i>
+                            </div>
+                            <input type="text" id="search" onkeyup="filterCurriculum()" class="block w-full pl-9 pr-3 py-2 border border-slate-300 rounded-lg text-sm bg-slate-50 placeholder-slate-400 focus:outline-hidden focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 focus:bg-white transition-all" placeholder="e.g. HTML, Circuits, 2.1...">
+                        </div>
+                    </div>
+
+                    <div>
+                        <span class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">View Profile</span>
+                        <div class="grid grid-cols-2 gap-2 bg-slate-100 p-1 rounded-lg">
+                            <button id="tab-calendar" onclick="switchTab('calendar')" class="text-xs font-semibold py-1.5 px-3 rounded-md transition-all bg-white text-slate-900 shadow-xs">Calendar</button>
+                            <button id="tab-standards" onclick="switchTab('standards')" class="text-xs font-semibold py-1.5 px-3 rounded-md transition-all text-slate-600 hover:text-slate-900">Standards</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <section class="lg:col-span-3 space-y-6">
+            
+            <div id="view-calendar" class="space-y-4">
+                </div>
+
+            <div id="view-standards" class="hidden bg-white p-6 rounded-xl shadow-xs border border-slate-200 space-y-6">
+                <div>
+                    <h2 class="text-xl font-bold text-slate-900">TN CTE Standards Coverage Profile</h2>
+                    <p class="text-sm text-slate-500 mt-1">Cross-reference map tracking CodeHS syllabus implementation against the official state technical competencies.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="p-4 border border-slate-100 rounded-lg bg-slate-50">
+                        <span class="inline-block bg-indigo-100 text-indigo-800 text-xs px-2 py-0.5 rounded font-bold mb-2">Core Blocks</span>
+                        <p class="text-xs text-slate-600 leading-relaxed"><strong class="text-slate-800">Required Modules:</strong> Safety (1.1, 1.2), Electronics (2.1), Career Exploration (3.1, 3.2), Internet (4.1), Emerging Tech (8.1-8.6), and Legal/Ethics (13.1).</p>
+                    </div>
+                    <div class="p-4 border border-slate-100 rounded-lg bg-slate-50">
+                        <span class="inline-block bg-emerald-100 text-emerald-800 text-xs px-2 py-0.5 rounded font-bold mb-2">Focus Pathways Included</span>
+                        <p class="text-xs text-slate-600 leading-relaxed"><strong class="text-slate-800">Integrated Target tracks:</strong> Web Design (5.1, 6.1, 7.1, 9.1, 10.1, 10.2, 11.1, 12.1, 12.2) and Coding/Cybersecurity (2.2-2.4, 6.2-6.3, 9.2-9.3, 14.1-14.3, 15.1, 16.1-16.3).</p>
+                    </div>
+                </div>
+
+                <div class="overflow-x-auto border border-slate-200 rounded-lg">
+                    <table class="min-w-full divide-y divide-slate-200 text-left text-xs">
+                        <thead class="bg-slate-50 text-slate-400 uppercase font-bold tracking-wider">
+                            <tr>
+                                <th class="px-4 py-3">Section Code</th>
+                                <th class="px-4 py-3">Tennessee State Standard Requirement</th>
+                                <th class="px-4 py-3">Assigned Schedule Block</th>
+                            </tr>
+                        </thead>
+                        <tbody id="standards-table-body" class="divide-y divide-slate-200 font-medium text-slate-700">
+                            </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <script>
+        // Comprehensive Syllabus & Mapping JSON Dataset
+        const syllabusData = [
+            {
+                week: 1,
+                title: "Introduction to Computing & Historical Innovations",
+                unit: "Unit 1: What is Computing?",
+                hours: "5 Hours",
+                standards: ["3.1", "3.2", "3.3", "4.1"],
+                description: "Dive into the historical evolution of computing from early mechanical constructs to modern architectures. Research computer innovators, outline tech roles in modern workflows, and evaluate computing impacts.",
+                assignments: ["Research early history & famous computing innovators", "Class Activity: Documenting an era of technical advance", "Explore local IT jobs & professional technical societies"]
+            },
+            {
+                week: 2,
+                title: "Computer Hardware Components & OS Infrastructure",
+                unit: "Unit 1: What is Computing?",
+                hours: "5 Hours",
+                standards: ["5.1", "6.2", "13.1"],
+                description: "Analyze core microcomponents inside the computer case. Map interactions between physical chipsets, motherboards, expansion buses, and the operational architecture of Windows, Mac, and Linux environments.",
+                assignments: ["Lab Exercise: Identify and label hardware layout profiles", "Compare general capabilities & architecture of modern OS types", "Analyze historical open-source vs proprietary licensing structures"]
+            },
+            {
+                week: 3,
+                title: "Electrical Circuits, Lab Safety & Physical Laws",
+                unit: "Unit 2: Electrical Circuits",
+                hours: "5 Hours",
+                standards: ["1.1", "1.2", "2.1"],
+                description: "Establish occupational laboratory safety practices including NSTA and OSHA parameters. Introduce digital electronics, DC circuits, operational physics variables, and algebraic circuit problem solving using Ohm's Law.",
+                assignments: ["Safety Competency Assessment: NSTA & OSHA classroom guidelines", "Ohm's Law Calculation Lab: Compute Voltage, Resistance, Current", "Simulator Practice: Basic electronic test equipment connection layout"]
+            },
+            {
+                week: 4,
+                title: "Digital Electronics, Logic Gates & Multimeters",
+                unit: "Unit 2: Electrical Circuits",
+                hours: "5 Hours",
+                standards: ["2.2", "2.4", "9.3"],
+                description: "Build logic structures via truth tables. Operate digital multimeters inside virtual circuit spaces to monitor real-time values across logical processing units containing AND, OR, and NOT logic gates.",
+                assignments: ["Multimeter Benchmarking: Measure component voltage drop profiles", "Truth Table Construction: Auto seatbelt alert control structures", "Simulator Lab: Deploying combined AND/OR processing array chips"]
+            },
+            {
+                week: 5,
+                title: "Web Design Foundations & Structural HTML",
+                unit: "Unit 3: Web Design",
+                hours: "5 Hours",
+                standards: ["6.1", "15.1", "16.1"],
+                description: "Unpack markup language mechanics inside the browser. Initialize structured client web page files utilizing clean nesting syntax, text formats, layout containers, and directory site root systems.",
+                assignments: ["Initialize root directory asset subfolder structures", "Build structural index elements featuring headers, sections, and layout typography", "CodeHS Editor Exercise: Fix rendering issues inside raw markup layouts"]
+            },
+            {
+                week: 6,
+                title: "Hyperlinks, Document Media & Legal Fair Use",
+                unit: "Unit 3: Web Design",
+                hours: "5 Hours",
+                standards: ["7.1", "12.1", "13.1"],
+                description: "Extend core text interfaces using navigational routing, relative file paths, and assets. Study digital intellectual property laws, fair use thresholds, and asset optimization parameters.",
+                assignments: ["Create a 5-target linked resource index catalog with contextual links", "Deploy localized personal profile libraries integrating responsive media elements", "Case Study Exercise: Navigating copyright and open source licensing parameters"]
+            },
+            {
+                week: 7,
+                title: "CSS Styling Architecture & Navigation Shortcuts",
+                unit: "Unit 3: Web Design",
+                hours: "5 Hours",
+                standards: ["6.1", "7.1", "12.1"],
+                description: "Implement precise styling control properties on HTML layout elements via style declarations. Construct design matrix shortcuts to assist development operations across OS profiles.",
+                assignments: ["Style structural pages with custom background, color palette, and layout spacing definitions", "Create a novice designer quick-reference shortcut matrix", "Project: Format readable layouts using internal styling rules"]
+            },
+            {
+                week: 8,
+                title: "Project Management, Teams & Client Discovery",
+                unit: "Unit 4: Project - Create a Website",
+                hours: "5 Hours",
+                standards: ["9.1", "10.1", "10.2", "11.1"],
+                description: "Initiate iterative agile engineering loops. Formulate requirements-gathering surveys, assign clear cross-functional development roles, and compose structural system maps outlining prospective portals.",
+                assignments: ["Draft structured client questionnaires targeting web profile requirements", "Conduct mock intake discovery sessions evaluating project criteria", "Construct logical site map graphs outlining site views"]
+            },
+            {
+                week: 9,
+                title: "Website Build & Content Management Platforms",
+                unit: "Unit 4: Project - Create a Website",
+                hours: "5 Hours",
+                standards: ["12.1", "12.2", "13.1"],
+                description: "Execute the planned codebase using collaborative team workflows. Explore alternatives using standard Content Management Systems (CMS), and implement rigorous cross-peer testing protocols.",
+                assignments: ["Publish the live web portfolio tracking active milestones", "Deploy a simple content management framework site dashboard", "Conduct formal layout design inspections with peer reviews"]
+            },
+            {
+                week: 10,
+                title: "Digital Information & Binary/Hex Number Systems",
+                unit: "Unit 5: Digital Information",
+                hours: "5 Hours",
+                standards: ["2.3", "6.2"],
+                description: "Trace how computers convert data into low-level machine instructions. Perform alphanumeric value conversions between base-2 (Binary), base-10 (Decimal), and base-16 (Hexadecimal) tracking registers.",
+                assignments: ["Math Matrix: Complete manual Binary to Hex value conversion charts", "Map memory addressing metrics matching standard hardware cache units", "Trace color value profiles via web hex string patterns"]
+            },
+            {
+                week: 11,
+                title: "Data Compression Theory & Troubleshooting Models",
+                unit: "Unit 5: Digital Information",
+                hours: "5 Hours",
+                standards: ["9.2", "15.1"],
+                description: "Examine algorithmic file footprints analyzing quality thresholds. Master logical structural documentation criteria while executing diagnostic steps to repair client configuration faults.",
+                assignments: ["Compare Lossless vs Lossy audio/image file processing sizes", "Draft standard diagnostic flow charts outlining IT resolution loops", "Activity: Document system configuration repair paths"]
+            },
+            {
+                week: 12,
+                title: "The Internet Infrastructure, Addressing & DNS",
+                unit: "Unit 6: The Internet",
+                hours: "5 Hours",
+                standards: ["4.1", "6.1", "6.3"],
+                description: "Examine physical transport layers routing internet traffic globally. Analyze standard infrastructure hardware, tracking structural differences separating IPv4 and IPv6 packet architectures and DNS resolution pipelines.",
+                assignments: ["Trace route paths map showing packet hop metrics", "Diagram the architectural lifecycle of an active DNS lookup query", "Compare localized client hardware network switch routes"]
+            },
+            {
+                week: 13,
+                title: "Distributed Computing, Privacy & Network Ethics",
+                unit: "Unit 6: The Internet",
+                hours: "5 Hours",
+                standards: ["3.1", "13.1", "13.2"],
+                description: "Compare processing workloads across sequential, parallel, and distributed computing arrays. Address technical compliance frameworks and the ethics of data models.",
+                assignments: ["Analyze processing times for complex multi-node data tasks", "Debate corporate asset monitoring guidelines vs individual user privacy metrics", "Research active AI automation pipelines and tracking bias considerations"]
+            },
+            {
+                week: 14,
+                title: "Cloud Computing Architectures & IoT Integrations",
+                unit: "Unit 7: Cloud Computing",
+                hours: "5 Hours",
+                standards: ["6.1", "8.1", "8.2", "8.3", "8.4", "8.5", "8.6"],
+                description: "Survey modern hosting frameworks. Differentiate Public, Private, Hybrid, and Community cloud deployments while mapping sensor networks driving the Internet of Things (IoT).",
+                assignments: ["Timeline: Document virtualization milestones over the last decade", "Diagram SaaS, PaaS, and IaaS resource allocation maps", "Case Study: Evaluate IoT automated sensor metrics optimizing efficiency"]
+            },
+            {
+                week: 15,
+                title: "Cybersecurity Frameworks & The CIA Triad",
+                unit: "Unit 8: What is Cybersecurity?",
+                hours: "5 Hours",
+                standards: ["1.1", "14.1", "14.2", "14.3"],
+                description: "Anatomize global modern defensive paradigms utilizing Confidentiality, Integrity, and Availability parameters. Evaluate enterprise threat maps and threat mitigation scripts.",
+                assignments: ["Analyze famous modern data breaches against CIA Triad metrics", "Review real-time live map visualizations tracking malware source patterns", "Configure strong mock BIOS access profiles and directory encryption options"]
+            },
+            {
+                week: 16,
+                title: "Data Science, Visualizations & Statistical Metrics",
+                unit: "Unit 9: Data",
+                hours: "5 Hours",
+                standards: ["8.6", "17.1"],
+                description: "Ingest massive datasets using analytical tools. Build informative charts to isolate behavior trends, clean source anomalies, and structure surveys to track data variance limits.",
+                assignments: ["Construct dynamic graphs mapping community data profiles", "Identify formatting bugs or gaps inside skewed external source surveys", "Write an analysis detailing the optimization of data analytics in business"]
+            },
+            {
+                week: 17,
+                title: "Command Lines, Automation Scripts & GitHub Versioning",
+                unit: "Unit 10: Advanced Coding Concepts",
+                hours: "5 Hours",
+                standards: ["9.3", "15.1", "16.2", "16.3"],
+                description: "Execute environment shell workflows using text interfaces. Script task files utilizing system variables and track project iterations using version control repository tracking systems.",
+                assignments: ["Write bash script code executing basic folder directory setups", "Run terminal diagnostics inside simulated system sandboxes", "Map out the continuous delivery steps inside the Software Development Life Cycle"]
+            },
+            {
+                week: 18,
+                title: "Final Technical Portfolio Presentations & Review",
+                unit: "Syllabus Capstone",
+                hours: "5 Hours",
+                standards: ["10.1", "12.2", "16.2"],
+                description: "Synthesize course achievements into an exit review. Present published live repositories demonstrating technical competence across programming, electrical circuits, web design, and cybersecurity infrastructure.",
+                assignments: ["Publish finalized digital portfolio code linking course assets", "Deliver a live presentation demonstrating site features and structural logic", "Complete final course technical evaluation profiles"]
+            }
+        ];
+
+        const standardDescriptions = {
+            "1.1": "Safety Rules compliance (NSTA, OSHA, electrical and internet regulations).",
+            "1.2": "Identification and proper handling protocols for laboratory safety equipment.",
+            "2.1": "Electrical circuit calculations using Ohm's Law and technical behaviors.",
+            "2.2": "Assembling test pathways and reading values via digital multimeters.",
+            "2.3": "Differentiating numeric frameworks across Binary and Hexadecimal registers.",
+            "2.4": "Constructing logic gate pathways (AND, OR, NOT) and defining truth tables.",
+            "3.1": "Researching technical IT job landscapes, environment matrices, and skill tools.",
+            "3.2": "Mapping professional engineering networks and membership certificates.",
+            "3.3": "Introduction to aligned CTSO leadership structures (TSA / SkillsUSA).",
+            "4.1": "Charting the evolution, architectural needs, and societal impacts of the Internet.",
+            "5.1": "Evaluating the capabilities and historical evolution of modern Operating Systems.",
+            "6.1": "Defining core networking and web architecture concepts (DNS, ISP, CMS, CSS).",
+            "6.2": "Identifying physical hardware motherboard, CPU, and chipset configurations.",
+            "6.3": "Differentiating Local/Wide area architectures and client-server workflows.",
+            "7.1": "Deploying cross-platform system keyboard macro shortcuts for web design.",
+            "8.1": "Tracing structural milestones that drove modern Cloud Computing deployment.",
+            "8.2": "Summarizing provider, customer, and structural cloud technician roles.",
+            "8.3": "Differentiating Public, Private, Hybrid, and Community cloud deployments.",
+            "8.4": "Analyzing virtualization profiles, physical storage units, and remote data tables.",
+            "8.5": "Evaluating Internet of Things automated networks and sensor integrations.",
+            "8.6": "Optimizing industrial operations through strategic database structures.",
+            "9.1": "Mapping the client web architecture lifecycle via flow charts.",
+            "9.2": "Executing chronological hardware/software system troubleshooting patterns.",
+            "9.3": "Constructing functional logic flowcharts to solve algorithmic problems.",
+            "10.1": "Coordinating clear responsibilities inside collaborative developer squads.",
+            "10.2": "Applying structured timeline management styles during web production cycles.",
+            "11.1": "Developing targeted intake surveys to catalog real client business parameters.",
+            "12.1": "Applying strict publication protocols across layout text assets.",
+            "12.2": "Deploying functional client sites using flexible Content Management Systems.",
+            "13.1": "Navigating digital trademark laws, copyright terms, and asset licenses.",
+            "13.2": "Evaluating biases, ethics guidelines, and user fairness models inside active AI setups.",
+            "14.1": "Analyzing structural information security using basic CIA Triad principles.",
+            "14.2": "Defending network entry vectors via encryption layers and access rules.",
+            "14.3": "Deploying administrative malware fixes and core system BIOS restrictions.",
+            "15.1": "Constructing organized directory structures using proper site roots.",
+            "16.1": "Evaluating programming execution formats across modern source languages.",
+            "16.2": "Tracking agile development tracks through the complete Software Development Life Cycle.",
+            "16.3": "Writing automated terminal scripts to manage routine client operations.",
+            "17.1": "Parsing massive business tables to isolate operational performance trends."
+        };
+
+        // Render the 18-Week Calendar UI Component
+        function renderCalendar() {
+            const container = document.getElementById('view-calendar');
+            container.innerHTML = syllabusData.map(w => `
+                <div class="week-card bg-white rounded-xl shadow-xs border border-slate-200 overflow-hidden hover:shadow-md transition-all" data-text="${w.title.toLowerCase()} ${w.unit.toLowerCase()} ${w.description.toLowerCase()} ${w.standards.join(' ')}">
+                    <div class="p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 bg-slate-50/50">
+                        <div class="flex items-start space-x-3.5">
+                            <input type="checkbox" id="check-w${w.week}" onchange="updateProgress()" class="mt-1.5 w-4 h-4 rounded-sm border-slate-300 text-indigo-600 focus:ring-indigo-500 cursor-pointer">
+                            <div>
+                                <div class="flex items-center space-x-2 flex-wrap gap-y-1">
+                                    <span class="text-xs font-bold text-indigo-600 uppercase tracking-wide">Week ${w.week}</span>
+                                    <span class="text-xs text-slate-400 font-medium">•</span>
+                                    <span class="text-xs text-slate-500 font-semibold">${w.unit}</span>
+                                </div>
+                                <h3 class="text-base font-bold text-slate-900 mt-0.5">${w.title}</h3>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-3 self-start sm:self-center">
+                            <span class="inline-flex items-center text-xs bg-slate-100 font-medium text-slate-600 px-2.5 py-1 rounded-md border border-slate-200">
+                                <i data-lucide="clock" class="w-3.5 h-3.5 mr-1 text-slate-400"></i> ${w.hours}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="p-5 space-y-4">
+                        <p class="text-sm text-slate-600 leading-relaxed">${w.description}</p>
+                        
+                        <div>
+                            <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Core Lab Targets</h4>
+                            <ul class="space-y-1.5">
+                                ${w.assignments.map(a => `
+                                    <li class="flex items-start text-xs text-slate-700">
+                                        <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400 mr-1.5 flex-shrink-0 mt-0.5"></i>
+                                        <span>${a}</span>
+                                    </li>
+                                `).join('')}
+                            </ul>
+                        </div>
+
+                        <div class="flex flex-wrap gap-1.5 pt-2 border-t border-slate-50">
+                            ${w.standards.map(std => `
+                                <span class="group relative cursor-help inline-flex items-center bg-slate-100 hover:bg-indigo-50 text-slate-700 hover:text-indigo-700 text-xs font-bold px-2 py-0.5 rounded border border-slate-200 hover:border-indigo-200 transition-colors" title="${standardDescriptions[std] || 'State Standard Target'}">
+                                    TN-${std}
+                                </span>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+            lucide.createIcons();
+            loadProgressState();
+        }
+
+        // Render State Standards Matrix Component
+        function renderStandardsTable() {
+            const tbody = document.getElementById('standards-table-body');
+            tbody.innerHTML = Object.keys(standardDescriptions).map(code => {
+                const matchedWeeks = syllabusData.filter(w => w.standards.includes(code)).map(w => `W${w.week}`);
+                return `
+                    <tr class="hover:bg-slate-50/70 transition-colors">
+                        <td class="px-4 py-3 font-bold text-indigo-600 border-r border-slate-100 whitespace-nowrap">TN-${code}</td>
+                        <td class="px-4 py-3 text-slate-600 max-w-md">${standardDescriptions[code]}</td>
+                        <td class="px-4 py-3 whitespace-nowrap">
+                            ${matchedWeeks.length ? matchedWeeks.map(w => `<span class="inline-block bg-slate-100 text-slate-700 text-[10px] font-bold px-1.5 py-0.5 rounded mr-1 border border-slate-200">${w}</span>`).join('') : '<span class="text-slate-300 font-normal">Elective Pathway</span>'}
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        // Real-Time Content Filter Mechanics
+        function filterCurriculum() {
+            const query = document.getElementById('search').value.toLowerCase();
+            const cards = document.getElementsByClassName('week-card');
+            
+            for (let card of cards) {
+                const searchContent = card.getAttribute('data-text');
+                if (searchContent.includes(query)) {
+                    card.style.display = "block";
+                } else {
+                    card.style.display = "none";
+                }
+            }
+        }
+
+        // View Layout Tab Control
+        function switchTab(target) {
+            const btnCal = document.getElementById('tab-calendar');
+            const btnStd = document.getElementById('tab-standards');
+            const viewCal = document.getElementById('view-calendar');
+            const viewStd = document.getElementById('view-standards');
+
+            if (target === 'calendar') {
+                btnCal.className = "text-xs font-semibold py-1.5 px-3 rounded-md transition-all bg-white text-slate-900 shadow-xs";
+                btnStd.className = "text-xs font-semibold py-1.5 px-3 rounded-md transition-all text-slate-600 hover:text-slate-900";
+                viewCal.classList.remove('hidden');
+                viewStd.classList.add('hidden');
+            } else {
+                btnStd.className = "text-xs font-semibold py-1.5 px-3 rounded-md transition-all bg-white text-slate-900 shadow-xs";
+                btnCal.className = "text-xs font-semibold py-1.5 px-3 rounded-md transition-all text-slate-600 hover:text-slate-900";
+                viewStd.classList.remove('hidden');
+                viewCal.classList.add('hidden');
+            }
+        }
+
+        // Local Storage State Progress Sync Controls
+        function updateProgress() {
+            const total = syllabusData.length;
+            let checkedCount = 0;
+            let savedState = {};
+
+            syllabusData.forEach(w => {
+                const cb = document.getElementById(`check-w${w.week}`);
+                savedState[`w${w.week}`] = cb.checked;
+                if (cb.checked) checkedCount++;
+            });
+
+            localStorage.setItem('tn_cs_foundations_progress', JSON.stringify(savedState));
+
+            const percent = Math.round((checkedCount / total) * 100);
+            document.getElementById('progress-percent').innerText = `${percent}%`;
+            document.getElementById('progress-bar').style.width = `${percent}%`;
+            document.getElementById('progress-fraction').innerText = `${checkedCount} / ${total} Weeks`;
+        }
+
+        function loadProgressState() {
+            const saved = localStorage.getItem('tn_cs_foundations_progress');
+            if (saved) {
+                const state = JSON.parse(saved);
+                syllabusData.forEach(w => {
+                    if (state[`w${w.week}`]) {
+                        document.getElementById(`check-w${w.week}`).checked = true;
+                    }
+                });
+                updateProgress();
+            }
+        }
+
+        // Initial Boot sequence
+        window.onload = function() {
+            renderCalendar();
+            renderStandardsTable();
+        };
+    </script>
+</body>
+</html>
